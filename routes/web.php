@@ -14,7 +14,7 @@ Route::get('/index', function () {
 });
 
 // Ruta para la vista de login personalizada
-Route::get('/custom-login', function () {
+Route::get('/login', function () {
     // Muestra la vista login.blade.php
     return view('login');
 });
