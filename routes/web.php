@@ -13,8 +13,8 @@ Route::get('/index', function () {
     return view('index');
 });
 
-// Ruta para la vista de login
-Route::get('/login', function () {
+// Ruta para la vista de login personalizada
+Route::get('/custom-login', function () {
     // Muestra la vista login.blade.php
     return view('login');
 });
