@@ -18,8 +18,8 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span>Cash Flow</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="/index.html">Inicio</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="signup.html">Registrarse</a>
+                    <li class="nav-item"><a class="nav-link" href="/index">Inicio</a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="/signup">Registrarse</a>
             </div>
         </div>
     </nav><!-- End: Navbar Centered Links -->
@@ -35,7 +35,7 @@
                         <div class="mb-3"><input class="shadow-sm form-control" type="password" name="password_repeat" placeholder="Repeat Password"></div>
                         <div class="mb-5"><button class="btn btn-primary shadow" type="submit">Create account</button></div>
                     </form>
-                    <p class="text-muted">Have an account? <a href="login.html">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
+                    <p class="text-muted">Have an account? <a href="/login">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M5 12l14 0"></path>
                                 <path d="M15 16l4 -4"></path>
