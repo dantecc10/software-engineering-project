@@ -33,6 +33,11 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+// Ruta para la vista de calendario
+Route::get('/calendar', function () {
+    return view('calendar');
+});
+
 // Rutas API para User
 Route::get('/api/users', [UserController::class, 'index']);
 Route::post('/api/users', [UserController::class, 'store']);
