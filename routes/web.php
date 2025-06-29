@@ -16,6 +16,7 @@ Route::get('/index', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
 // Ruta para la vista de 404 personalizada
 Route::get('/404', function () {
     return view('404');
