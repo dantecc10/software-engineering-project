@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec') }}">
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=75572ffee0351e7b945b40fd2abf550b') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=c618da5dc047526baf895f06b4546604') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=8cd6936fd1a0d6cf978a310e8dd8f018') }}">
 </head>
 
 <body>
@@ -91,6 +91,7 @@
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/calendar.js?h=255f46ee5590b7e43607b9c40b06e45b') }}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
     <script src="{{ asset('assets/js/startup-modern.js?h=860a1ecddc64fd24c02f2fc109343dbd') }}"></script>
 </body>
