@@ -7,11 +7,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Ruta para la vista de inicio (index)
-Route::get('/index', function () {
-    return view('index');
-});
-
 // Ruta para la vista de login personalizada
 Route::get('/login', function () {
     return view('login');
