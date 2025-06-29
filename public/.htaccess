@@ -25,3 +25,11 @@
 
     # ...debería existir y contener las reglas de Laravel...
 </IfModule>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header unset X-Powered-By
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header unset Pragma
+    Header unset Expires
+</IfModule>
