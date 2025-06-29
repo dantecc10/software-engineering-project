@@ -7,6 +7,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Ruta para el index de la aplicación
+Route::get('/index', function () {
+    return view('index');
+});
+
 // Ruta para la vista de login personalizada
 Route::get('/login', function () {
     return view('login');
