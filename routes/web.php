@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 // Ruta principal, muestra la vista de bienvenida
 Route::get('/', function () {
@@ -31,3 +32,10 @@ Route::get('/faq', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
+
+// Rutas API para User
+Route::get('/api/users', [UserController::class, 'index']);
+Route::post('/api/users', [UserController::class, 'store']);
+Route::get('/api/users/{id}', [UserController::class, 'show']);
+Route::put('/api/users/{id}', [UserController::class, 'update']);
+Route::delete('/api/users/{id}', [UserController::class, 'destroy']);
