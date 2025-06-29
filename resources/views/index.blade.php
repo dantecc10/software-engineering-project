@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec') }}">
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=75572ffee0351e7b945b40fd2abf550b') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=4a9b6a61afab4e9f50d28d9a847694d5') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=c618da5dc047526baf895f06b4546604') }}">
 </head>
 
 <body>
@@ -27,8 +27,8 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ asset('/') }}"><span>Cash Flow</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" href="{{ asset('/index.html') }}">Inicio</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="{{ asset('signup.html') }}">Registrarse</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('/index') }}">Inicio</a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="{{ asset('login') }}">Iniciar sesión</a>
             </div>
         </div>
     </nav><!-- End: Navbar Centered Links -->
