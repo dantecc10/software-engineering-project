@@ -99,7 +99,9 @@
             </div>
         </div>
     </footer><!-- End: Footer Multi Column -->
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/calendar.js?h=7c53276e842558c41eeb21753b436655') }}"></script>
     <script src="{{ asset('assets/js/startup-modern.js?h=860a1ecddc64fd24c02f2fc109343dbd') }}"></script>
 </body>
 
