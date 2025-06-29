@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec') }}">
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=75572ffee0351e7b945b40fd2abf550b') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=64fbf56636d93d35d980293eea3bda88') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=4a9b6a61afab4e9f50d28d9a847694d5') }}">
 </head>
 
 <body>
@@ -102,7 +102,7 @@
                                             <td>16</td>
                                             <td>17</td>
                                             <td>18</td>
-                                            <td class="selected">19</td>
+                                            <td>19</td>
                                             <td>20</td>
                                             <td>21</td>
                                         </tr>
@@ -111,7 +111,7 @@
                                             <td>23</td>
                                             <td>24</td>
                                             <td>25</td>
-                                            <td class="selected">26</td>
+                                            <td>26</td>
                                             <td>27</td>
                                             <td>28</td>
                                         </tr>
@@ -120,7 +120,7 @@
                                             <td>30</td>
                                             <td></td>
                                             <td></td>
-                                            <td class="selected"></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
@@ -129,7 +129,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td class="selected"></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
