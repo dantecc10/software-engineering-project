@@ -2,15 +2,36 @@
 
 CLEAN=false
 
-# ✅ Revisar si el usuario quiere la opción --clean
+# Obtener la ruta y eliminarla de $1 si es --clean
 if [ "$1" == "--clean" ]; then
+    CLEAN=true
+    TARGET_DIR=""
+    echo "🧹 La opción --clean está activada. Los archivos .html originales serán eliminados después de la conversión."
+elif [ -n "$1" ]; then
+    TARGET_DIR="$1"
+else
+    TARGET_DIR=""
+fi
+
+# Si la segunda posición es --clean
+if [ "$2" == "--clean" ]; then
     CLEAN=true
     echo "🧹 La opción --clean está activada. Los archivos .html originales serán eliminados después de la conversión."
 fi
 
+# Si no se recibió ruta, usar directorio del script
+if [ -z "$TARGET_DIR" ]; then
+    # Directorio donde está el script
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    TARGET_DIR="$SCRIPT_DIR"
+fi
+
+echo "🔄 Cambiando al directorio: $TARGET_DIR"
+cd "$TARGET_DIR" || { echo "❌ No se pudo cambiar al directorio $TARGET_DIR"; exit 1; }
+
 echo "🔎 Buscando archivos .html en el directorio actual..."
 
-# ✅ Procesar cada archivo .html
+# Procesar cada archivo .html
 for html_file in *.html; do
     # Si no hay archivos .html, saltar
     [ -e "$html_file" ] || continue
@@ -34,14 +55,14 @@ for html_file in *.html; do
 
     echo "✔️  $blade_file listo."
 
-    # ✅ Si la opción --clean está activada, eliminar el .html original
+    # Si la opción --clean está activada, eliminar el .html original
     if [ "$CLEAN" = true ]; then
         rm "$html_file"
         echo "🗑️  $html_file eliminado."
     fi
 done
 
-# ✅ Copiar carpeta assets a public/assets/
+# Copiar carpeta assets a public/assets/
 SOURCE_ASSETS_DIR="./assets"
 TARGET_ASSETS_DIR="../../public/assets"
 
