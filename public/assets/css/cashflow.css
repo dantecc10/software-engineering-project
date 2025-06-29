@@ -1,0 +1,173 @@
+.custom-fixed {
+  table-layout: fixed;
+  width: 90%;
+}
+
+#header {
+  width: 100%;
+  position: relative;
+}
+
+.calendar-container {
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: normal;
+  background: #f8f9fd;
+  color: gray;
+}
+
+.ftco-section {
+  padding: 7em 0;
+}
+
+.ftco-no-pt {
+  padding-top: 0;
+}
+
+.ftco-no-pb {
+  padding-bottom: 0;
+}
+
+.heading-section {
+  font-size: 28px;
+  color: #000;
+}
+
+.img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.elegant-calendar {
+  max-width: 700px;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 19px 27px -20px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 19px 27px -20px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 19px 27px -20px rgba(0, 0, 0, 0.16);
+}
+
+.wrap-header {
+  position: relative;
+  width: 35%;
+  z-index: 0;
+}
+
+.wrap-header:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  background: #000;
+  opacity: .5;
+  z-index: -1;
+}
+
+@media (max-width: 767.98px) {
+  .wrap-header {
+    width: 100%;
+    padding: 20px 0;
+  }
+}
+
+#header {
+  width: 100%;
+  position: relative;
+}
+
+#header .pre-button, #header .next-button {
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+#header .pre-button i, #header .next-button i {
+  color: #fff;
+}
+
+.pre-button {
+  left: 5px;
+}
+
+.next-button {
+  right: 5px;
+}
+
+.button-wrap {
+  position: relative;
+  padding: 10px 0;
+}
+
+.button-wrap .pre-button, .button-wrap .next-button {
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  font-size: 18px;
+}
+
+.button-wrap .pre-button i, .button-wrap .next-button i {
+  color: #cccccc;
+}
+
+.button-wrap .pre-button {
+  left: 20px;
+}
+
+.button-wrap .next-button {
+  right: 20px;
+}
+
+.head-day {
+  font-size: 9em;
+  line-height: 1;
+  color: #fff;
+}
+
+.head-month {
+  font-size: 2em;
+  line-height: 1;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.calendar-wrap {
+  width: 65%;
+  background: #fff;
+  padding: 40px 20px 20px 20px;
+}
+
+@media (max-width: 767.98px) {
+  .calendar-wrap {
+    width: 100%;
+  }
+}
+
+#calendar {
+  width: 100%;
+}
+
+#calendar tr {
+  height: 3em;
+}
+

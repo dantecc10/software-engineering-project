@@ -7,26 +7,32 @@
     <title>Sign up - Cash Flow</title>
     <meta property="og:type" content="website">
     <meta name="description" content="Controla tus ingresos y gastos de manera simple y rápida. Una herramienta diseñada para estudiantes y personas que quieren mejorar su administración financiera del día a día.">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/bss-overrides.css?h=85e5d5ab3f7ed47d66d9f784f861be22">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec') }}">
+    <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=75572ffee0351e7b945b40fd2abf550b') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=64fbf56636d93d35d980293eea3bda88') }}">
 </head>
 
 <body>
     <!-- Start: Navbar Centered Links -->
     <nav class="navbar navbar-expand-md fixed-top py-3 navbar-shrink" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span>Cash Flow</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ asset('/') }}"><span>Cash Flow</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
+<<<<<<< HEAD
                     <li class="nav-item"><a class="nav-link" href="/index">Inicio</a></li>
                 </ul><a class="btn btn-primary shadow" role="button" href="/signup">Registrarse</a>
+=======
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('/index.html') }}">Inicio</a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="{{ asset('signup.html') }}">Registrarse</a>
+>>>>>>> 7eaddee (diseños)
             </div>
         </div>
     </nav><!-- End: Navbar Centered Links -->
     <section class="my-5 py-4 py-md-5">
         <div class="container py-md-5">
             <div class="row">
-                <div class="col-md-6 text-center"><img class="img-fluid w-100" src="assets/img/illustrations/register.svg?h=aa57a3341846af8b091dc008c25da279"></div>
+                <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{{ asset('assets/img/illustrations/register.svg?h=aa57a3341846af8b091dc008c25da279') }}"></div>
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="pb-1 underline"><strong>Sign up</strong></span></h2>
                     <form method="post" data-bs-theme="light">
@@ -35,7 +41,11 @@
                         <div class="mb-3"><input class="shadow-sm form-control" type="password" name="password_repeat" placeholder="Repeat Password"></div>
                         <div class="mb-5"><button class="btn btn-primary shadow" type="submit">Create account</button></div>
                     </form>
+<<<<<<< HEAD
                     <p class="text-muted">Have an account? <a href="/login">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
+=======
+                    <p class="text-muted">Have an account? <a href="{{ asset('login.html') }}">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
+>>>>>>> 7eaddee (diseños)
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M5 12l14 0"></path>
                                 <path d="M15 16l4 -4"></path>
@@ -57,27 +67,27 @@
                 <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Services</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#">Web design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Hosting</a></li>
+                        <li><a href="{{ asset('#') }}">Web design</a></li>
+                        <li><a href="{{ asset('#') }}">Development</a></li>
+                        <li><a href="{{ asset('#') }}">Hosting</a></li>
                     </ul>
                 </div><!-- End: Services -->
                 <!-- Start: About -->
                 <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">About</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#">Company</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Legacy</a></li>
+                        <li><a href="{{ asset('#') }}">Company</a></li>
+                        <li><a href="{{ asset('#') }}">Team</a></li>
+                        <li><a href="{{ asset('#') }}">Legacy</a></li>
                     </ul>
                 </div><!-- End: About -->
                 <!-- Start: Careers -->
                 <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Careers</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#">Job openings</a></li>
-                        <li><a href="#">Employee success</a></li>
-                        <li><a href="#">Benefits</a></li>
+                        <li><a href="{{ asset('#') }}">Job openings</a></li>
+                        <li><a href="{{ asset('#') }}">Employee success</a></li>
+                        <li><a href="{{ asset('#') }}">Benefits</a></li>
                     </ul>
                 </div><!-- End: Careers -->
             </div>
@@ -98,8 +108,8 @@
             </div>
         </div>
     </footer><!-- End: Footer Multi Column -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/startup-modern.js?h=860a1ecddc64fd24c02f2fc109343dbd"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/startup-modern.js?h=860a1ecddc64fd24c02f2fc109343dbd') }}"></script>
 </body>
 
 </html>
