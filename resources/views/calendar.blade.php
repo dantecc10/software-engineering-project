@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="es-mx">
+<html data-bs-theme="light" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Log in - Cash Flow</title>
+    <title>Testimonials - Cash Flow</title>
     <meta property="og:type" content="website">
     <meta name="description" content="Controla tus ingresos y gastos de manera simple y rápida. Una herramienta diseñada para estudiantes y personas que quieren mejorar su administración financiera del día a día.">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec') }}">
@@ -24,24 +24,124 @@
             </div>
         </div>
     </nav><!-- End: Navbar Centered Links -->
-    <!-- Start: Login Form -->
-    <section class="my-5 py-4 py-md-5">
-        <div class="container py-md-5">
+    <section class="mt-5 py-5">
+        <!-- Start: Testimonials -->
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Revisa tus<br><span class="pb-2 underline">gastos</span>&nbsp;e ingresos</h2>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{{ asset('assets/img/illustrations/login.svg?h=dd35c7dba58803954242d42488889a4c') }}"></div>
-                <div class="col-md-5 col-xl-4 text-center text-md-start">
-                    <h2 class="display-6 fw-bold mb-5"><span class="pb-1 underline"><strong>Iniciar sesión</strong></span></h2>
-                    <form method="post" data-bs-theme="light">
-                        <div class="mb-3"><input class="shadow form-control" type="email" name="email" placeholder="Email"></div>
-                        <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Contraseña"></div>
-                        <div class="mb-5"><button class="btn btn-primary shadow" type="submit">Iniciar sesión</button></div>
-                    </form>
-                    <p class="text-muted"><a href="{{ asset('forgotten-password.html') }}">¿Olvidaste tu contraseña?</a></p>
+                <div class="col"></div>
+            </div>
+        </div><!-- End: Testimonials -->
+        <div class="container calendar-container">
+            <div class="row justify-content-center">
+                <div class="col col-md-6 text-center mb-5">
+                    <h3>Calendario</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="d-md-flex elegant-calendar">
+                        <div class="d-flex align-items-center wrap-header img" style="background-image: url('https://preview.colorlib.com/theme/bootstrap/calendar-07/images/bg.jpg')">
+                            <p id="reset">Today</p>
+                            <div class="p-0" id="header">
+                                <div class="head-info">
+                                    <div class="head-month"><span>June - 2025</span></div>
+                                    <div class="head-day"><span>29</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calendar-wrap">
+                            <div class="w-100 button-wrap">
+                                <div class="d-flex justify-content-center align-items-center pre-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor">
+                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                                        <path d="M48 416c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-320c0-8.8-7.2-16-16-16L64 80c-8.8 0-16 7.2-16 16l0 320zm16 64c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480zm64-224c0-6.7 2.8-13 7.7-17.6l112-104c7-6.5 17.2-8.2 25.9-4.4s14.4 12.5 14.4 22l0 208c0 9.5-5.7 18.2-14.4 22s-18.9 2.1-25.9-4.4l-112-104c-4.9-4.5-7.7-10.9-7.7-17.6z"></path>
+                                    </svg></div>
+                                <div class="d-flex justify-content-center align-items-center next-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor">
+                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                                        <path d="M400 96c0-8.8-7.2-16-16-16L64 80c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-320zM384 32c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l320 0zM320 256c0 6.7-2.8 13-7.7 17.6l-112 104c-7 6.5-17.2 8.2-25.9 4.4s-14.4-12.5-14.4-22l0-208c0-9.5 5.7-18.2 14.4-22s18.9-2.1 25.9 4.4l112 104c4.9 4.5 7.7 10.9 7.7 17.6z"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table" id="calendar">
+                                    <thead>
+                                        <tr>
+                                            <th>Sun</th>
+                                            <th>Mon</th>
+                                            <th>Tue</th>
+                                            <th>Wed</th>
+                                            <th>Thu</th>
+                                            <th>Fri</th>
+                                            <th>Sat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                            <td>6</td>
+                                            <td>7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>9</td>
+                                            <td>10</td>
+                                            <td>11</td>
+                                            <td>12</td>
+                                            <td>13</td>
+                                            <td>14</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <td>16</td>
+                                            <td>17</td>
+                                            <td>18</td>
+                                            <td class="selected">19</td>
+                                            <td>20</td>
+                                            <td>21</td>
+                                        </tr>
+                                        <tr>
+                                            <td>22</td>
+                                            <td>23</td>
+                                            <td>24</td>
+                                            <td>25</td>
+                                            <td class="selected">26</td>
+                                            <td>27</td>
+                                            <td>28</td>
+                                        </tr>
+                                        <tr>
+                                            <td id="today-1">29</td>
+                                            <td>30</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="selected"></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="selected"></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section><!-- End: Login Form -->
-    <!-- Start: Footer Multi Column -->
+    </section><!-- Start: Footer Multi Column -->
     <footer>
         <div class="container py-4 py-lg-5">
             <div class="row row-cols-2 row-cols-md-4">

@@ -19,13 +19,8 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ asset('/') }}"><span>Cash Flow</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-<<<<<<< HEAD
-                    <li class="nav-item"><a class="nav-link" href="/index">Inicio</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="/signup">Registrarse</a>
-=======
                     <li class="nav-item"><a class="nav-link" href="{{ asset('/index.html') }}">Inicio</a></li>
                 </ul><a class="btn btn-primary shadow" role="button" href="{{ asset('signup.html') }}">Registrarse</a>
->>>>>>> 7eaddee (diseños)
             </div>
         </div>
     </nav><!-- End: Navbar Centered Links -->
