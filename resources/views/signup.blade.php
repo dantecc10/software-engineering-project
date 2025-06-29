@@ -30,10 +30,11 @@
                 <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{{ asset('assets/img/illustrations/register.svg?h=aa57a3341846af8b091dc008c25da279') }}"></div>
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="pb-1 underline"><strong>Sign up</strong></span></h2>
-                    <form method="post" data-bs-theme="light">
-                        <div class="mb-3"><input class="shadow-sm form-control" type="email" name="email" placeholder="Email"></div>
-                        <div class="mb-3"><input class="shadow-sm form-control" type="password" name="password" placeholder="Password"></div>
-                        <div class="mb-3"><input class="shadow-sm form-control" type="password" name="password_repeat" placeholder="Repeat Password"></div>
+                    <form id="user-registration-form" method="post" data-bs-theme="light">
+                        <div class="mb-3"><input class="shadow-sm form-control" type="text" id="name" name="name" placeholder="Nombre"></div>
+                        <div class="mb-3"><input class="shadow-sm form-control" type="email" id="email" name="email" placeholder="Email"></div>
+                        <div class="mb-3"><input class="shadow-sm form-control" type="password" id="password" name="password" placeholder="Password"></div>
+                        <div class="mb-3"><input class="shadow-sm form-control" type="password" id="password-repeat" name="password_repeat" placeholder="Repeat Password"></div>
                         <div class="mb-5"><button class="btn btn-primary shadow" type="submit">Create account</button></div>
                     </form>
                     <p class="text-muted">Have an account? <a href="{{ asset('login.html') }}">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
@@ -104,6 +105,7 @@
     <script src="{{ asset('assets/js/calendar.js?h=255f46ee5590b7e43607b9c40b06e45b') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
+    <script src="{{ asset('assets/js/ops.js?h=aabd161094d0ba3a8604ce2e6b96e251') }}"></script>
     <script src="{{ asset('assets/js/startup-modern.js?h=860a1ecddc64fd24c02f2fc109343dbd') }}"></script>
 </body>
 

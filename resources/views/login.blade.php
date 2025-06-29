@@ -100,6 +100,7 @@
     <script src="{{ asset('assets/js/calendar.js?h=255f46ee5590b7e43607b9c40b06e45b') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
+    <script src="{{ asset('assets/js/ops.js?h=aabd161094d0ba3a8604ce2e6b96e251') }}"></script>
     <script src="{{ asset('assets/js/startup-modern.js?h=860a1ecddc64fd24c02f2fc109343dbd') }}"></script>
 </body>
 
