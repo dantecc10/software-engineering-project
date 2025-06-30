@@ -32,7 +32,8 @@
                 <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{{ asset('assets/img/illustrations/login.svg?h=dd35c7dba58803954242d42488889a4c') }}"></div>
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="pb-1 underline"><strong>Iniciar sesión</strong></span></h2>
-                    <form method="post" data-bs-theme="light">
+                    <form method="post" action="/login" data-bs-theme="light">
+                        @csrf
                         <div class="mb-3"><input class="shadow form-control" type="email" name="email" placeholder="Email"></div>
                         <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Contraseña"></div>
                         <div class="mb-5"><button class="btn btn-primary shadow" type="submit">Iniciar sesión</button></div>

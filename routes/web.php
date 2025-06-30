@@ -7,6 +7,7 @@ use App\Http\Controllers\FrequencyController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\AlertController;
+use App\Http\Controllers\AuthController;
 
 // Ruta principal, muestra la vista de bienvenida
 Route::get('/', function () {
@@ -22,6 +23,9 @@ Route::get('/index', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+// Ruta para procesar el login (POST)
+Route::post('/login', [AuthController::class, 'login']);
 
 // Ruta para la vista de 404 personalizada
 Route::get('/404', function () {
