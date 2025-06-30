@@ -402,6 +402,20 @@
         }
         freq.addEventListener('change', toggleNextDate);
         toggleNextDate();
+
+        // Convertir IDs a número antes de enviar el formulario de egreso
+        const expenseForm = document.getElementById('addExpenseForm');
+        expenseForm.addEventListener('submit', function(e) {
+            // Convierte category_id y frequency_id a número
+            const catSelect = document.getElementById('expense-category');
+            const freqSelect = document.getElementById('expense-frequency');
+            if (catSelect && catSelect.value) {
+                catSelect.value = parseInt(catSelect.value, 10);
+            }
+            if (freqSelect && freqSelect.value) {
+                freqSelect.value = parseInt(freqSelect.value, 10);
+            }
+        });
     });
     </script>
 </body>
