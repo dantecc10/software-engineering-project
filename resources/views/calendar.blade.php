@@ -316,7 +316,7 @@
                             <select class="form-select" id="expense-frequency" name="frequency_id" required>
                                 <option value="">Selecciona una frecuencia</option>
                                 @foreach($frequencies as $freq)
-                                    <option value="{{ $freq->id }}">{{ $freq->frequency_name }}</option>
+                                    <option value="{{ $freq->id }}" data-name="{{ $freq->frequency_name }}">{{ $freq->frequency_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -390,7 +390,10 @@
         const freq = document.getElementById('expense-frequency');
         const nextDateGroup = document.getElementById('expense-next-date-group');
         function toggleNextDate() {
-            if (freq.value === 'Única vez') {
+            // Detecta por nombre, no solo por valor
+            const selected = freq.options[freq.selectedIndex];
+            const freqName = selected ? selected.getAttribute('data-name') : '';
+            if (freqName === 'Única vez') {
                 nextDateGroup.style.display = 'none';
                 document.getElementById('expense-next-date').value = '';
             } else {
