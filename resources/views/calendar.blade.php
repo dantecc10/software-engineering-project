@@ -293,7 +293,17 @@
                         </div>
                         <div class="mb-3">
                             <label for="expense-category" class="form-label">Categoría</label>
-                            <input type="text" class="form-control" id="expense-category" name="category" required>
+                            <select class="form-select" id="expense-category" name="category" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="Alimentación">Alimentación</option>
+                                <option value="Transporte">Transporte</option>
+                                <option value="Entretenimiento">Entretenimiento</option>
+                                <option value="Salud">Salud</option>
+                                <option value="Educación">Educación</option>
+                                <option value="Servicios">Servicios</option>
+                                <option value="Renta">Renta</option>
+                                <option value="Otros">Otros</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="expense-description" class="form-label">Descripción</label>
