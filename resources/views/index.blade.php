@@ -28,6 +28,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ asset('/index') }}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ asset('calendar') }}">Calendario</a></li>
                 </ul><a class="btn btn-primary shadow" role="button" href="{{ asset('login') }}">Iniciar sesión</a>
             </div>
         </div>
@@ -39,11 +40,7 @@
                 <div class="col-md-8 text-center text-md-start mx-auto">
                     <div class="text-center">
                         <h1 class="display-4 fw-bold mb-5">Administra tus gastos de forma&nbsp;<span class="underline">inteligente</span>.</h1>
-                        <p class="fs-5 text-muted mb-5">Metus quisque ultricies vehicula proin, magna nullam.</p>
-                        <form class="d-flex justify-content-center flex-wrap" method="post" data-bs-theme="light">
-                            <div class="shadow-lg mb-3"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
-                            <div class="shadow-lg mb-3"><button class="btn btn-primary" type="submit">Subscribe </button></div>
-                        </form>
+                        <p class="fs-5 text-muted mb-5">Contabilizar gastos e ingresos nunca había sido tan sencillo.</p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-10 mx-auto">
@@ -126,37 +123,27 @@
         <div class="container py-4 py-lg-5">
             <div class="row row-cols-2 row-cols-md-4">
                 <!-- Start: Social Icons -->
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="fw-bold d-flex align-items-center mb-2"><span>Cash Flow</span></div>
                     <p class="text-muted">Toma el control de tus gastos e ingresos y administra mejor tus finanzas.</p>
                 </div><!-- End: Social Icons -->
                 <!-- Start: Services -->
-                <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column">
-                    <h3 class="fs-6 fw-bold">Services</h3>
+                <div class="col-sm col-md-4 text-lg-start d-flex flex-column">
+                    <h3 class="fs-6 fw-bold">Accesos rápidos</h3>
                     <ul class="list-unstyled">
-                        <li><a href="{{ asset('#') }}">Web design</a></li>
-                        <li><a href="{{ asset('#') }}">Development</a></li>
-                        <li><a href="{{ asset('#') }}">Hosting</a></li>
+                        <li><a href="{{ asset('#') }}">Calendario</a></li>
+                        <li><a href="{{ asset('#') }}">Registro</a></li>
+                        <li><a href="{{ asset('#') }}">Ayuda</a></li>
                     </ul>
                 </div><!-- End: Services -->
                 <!-- Start: About -->
-                <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column">
+                <div class="col-sm col-md-4 text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">About</h3>
                     <ul class="list-unstyled">
-                        <li><a href="{{ asset('#') }}">Company</a></li>
-                        <li><a href="{{ asset('#') }}">Team</a></li>
-                        <li><a href="{{ asset('#') }}">Legacy</a></li>
+                        <li><a href="{{ asset('#') }}">Equipo</a></li>
+                        <li><a href="{{ asset('#') }}">Legal</a></li>
                     </ul>
                 </div><!-- End: About -->
-                <!-- Start: Careers -->
-                <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column">
-                    <h3 class="fs-6 fw-bold">Careers</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ asset('#') }}">Job openings</a></li>
-                        <li><a href="{{ asset('#') }}">Employee success</a></li>
-                        <li><a href="{{ asset('#') }}">Benefits</a></li>
-                    </ul>
-                </div><!-- End: Careers -->
             </div>
             <hr>
             <div class="text-muted d-flex justify-content-between align-items-center pt-3">

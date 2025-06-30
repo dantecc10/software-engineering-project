@@ -1,42 +1,30 @@
-function createUser(name, email, password) {
+function createUser(name, email, password_hash) {
     return fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name, email, password_hash: password })
-    }).then(response => {
-        if (!response.ok) {
-            return response.json().then(err => { throw err; });
-        }
-        return response.json();
-    });
+        body: JSON.stringify({ name, email, password_hash })
+    }).then(response => response.json());
 }
 
 document.getElementById('user-registration-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Evitar que recargue la página
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const passwordRepeat = document.getElementById('password-repeat').value;
-
-    if (!name || !email || !password || !passwordRepeat) {
-        alert("Todos los campos son obligatorios");
-        return;
-    }
-
-    if (password !== passwordRepeat) {
+    
+    if (password != document.getElementById('password-repeat').value) {
         alert("Las contraseñas no coinciden");
-        return;
+        return null;
     }
 
     createUser(name, email, password)
         .then(response => {
+            console.log('Usuario creado:', response);
             alert('Usuario registrado con éxito');
-            document.getElementById('user-registration-form').reset();
         })
         .catch(error => {
-            let msg = 'Error al registrar usuario';
-            if (error && error.message) msg += ': ' + error.message;
-            alert(msg);
+            console.error('Error al crear usuario:', error);
+            alert('Error al registrar usuario');
         });
 });
