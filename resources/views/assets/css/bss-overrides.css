@@ -2,6 +2,10 @@
   padding: 0 !important;
 }
 
+.p-3 {
+  padding: 1rem !important;
+}
+
 .p-4 {
   padding: 1.5rem !important;
 }
