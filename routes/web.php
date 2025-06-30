@@ -43,6 +43,11 @@ Route::get('/calendar', function () {
     return view('calendar');
 });
 
+// Ruta para el testimonials
+Route::get('/testimonials', function () {
+    return view('testimonials');
+});
+
 // Rutas API para platform_users (usando UserController)
 Route::get('/api/users', [UserController::class, 'index']);
 Route::post('/api/users', [UserController::class, 'store']);
