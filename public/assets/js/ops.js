@@ -12,8 +12,17 @@ document.getElementById('user-registration-form').addEventListener('submit', fun
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    
-    if (password != document.getElementById('password-repeat').value) {
+    const passwordRepeat = document.getElementById('password-repeat').value;
+
+    // Mostrar el objeto que se enviará
+    console.log({
+        name,
+        email,
+        password,
+        password_repeat: passwordRepeat
+    });
+
+    if (password != passwordRepeat) {
         alert("Las contraseñas no coinciden");
         return null;
     }
