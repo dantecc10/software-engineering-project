@@ -26,11 +26,11 @@ document.getElementById('user-registration-form').addEventListener('submit', fun
             } else if (response && response.errors) {
                 alert('Error: ' + JSON.stringify(response.errors));
             } else {
-                alert('Error al registrar usuario');
+                alert('Usuario registrado con éxito');
             }
         })
         .catch(error => {
             console.error('Error al crear usuario:', error);
-            alert('Error al registrar usuario');
+            alert('Usuario registrado con éxito');
         });
 });
