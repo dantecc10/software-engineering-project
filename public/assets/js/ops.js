@@ -1,7 +1,5 @@
 function createUser(name, email, password_hash) {
-    // Detecta la ruta base automáticamente
-    const baseUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '');
-    return fetch(baseUrl + '/api/users', {
+    return fetch('/api/platform_users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ name, email, password_hash })
@@ -52,5 +50,4 @@ document.getElementById('user-registration-form').addEventListener('submit', fun
             console.error('Error al crear usuario:', error);
             alert('Error al registrar usuario');
         });
-
-    });
+});
