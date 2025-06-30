@@ -349,22 +349,27 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const freqSelect = document.getElementById('expense-frequency');
             const freqValue = freqSelect.value;
-            const nextDateValue = (() => {
-                // Detecta por nombre, no solo por valor
-                const selected = freqSelect.options[freqSelect.selectedIndex];
-                const freqName = selected ? selected.getAttribute('data-name') : '';
-                return freqName === 'Única vez' ? null : document.getElementById('expense-next-date').value;
-            })();
+            const selectedFreqOption = freqSelect.options[freqSelect.selectedIndex];
+            const freqName = selectedFreqOption ? selectedFreqOption.getAttribute('data-name') : '';
+            const catSelect = document.getElementById('expense-category');
+            const catValue = catSelect.value;
+            const selectedCatOption = catSelect.options[catSelect.selectedIndex];
+            const catName = selectedCatOption ? selectedCatOption.text : '';
+
+            // Imprime los valores seleccionados en consola
+            console.log('frequency_id:', freqValue, 'frequency_name:', freqName);
+            console.log('category_id:', catValue, 'category_name:', catName);
+
+            const nextDateValue = freqName === 'Única vez' ? null : document.getElementById('expense-next-date').value;
             const data = {
                 user_id: window.userId || 1,
                 date: document.getElementById('expense-date').value,
-                category_id: document.getElementById('expense-category').value,
+                category_id: catValue,
                 description: document.getElementById('expense-description').value,
                 amount: parseFloat(document.getElementById('expense-amount').value),
                 frequency_id: freqValue,
                 next_date: nextDateValue
             };
-            // Validación rápida para evitar enviar campos vacíos
             if (!data.category_id || !data.frequency_id) {
                 alert('Selecciona una categoría y una frecuencia.');
                 return;
@@ -378,7 +383,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(data)
             })
             .then(async res => {
-                // Si el backend responde con error 500, intenta leer el mensaje
                 let json;
                 try { json = await res.json(); } catch { json = {}; }
                 if (res.ok && (json.id || json.expense_id)) {
