@@ -8,8 +8,8 @@ function createUser(name, email, password_hash) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRF-TOKEN': getCsrfToken()
+            'Accept': 'application/json'
+            // No envíes 'X-CSRF-TOKEN' aquí
         },
         body: JSON.stringify({ name, email, password_hash })
     }).then(response => response.json());
