@@ -195,8 +195,16 @@ async function fetchFinancialData() {
 // Sobrescribe showDetailModal para recargar datos antes de mostrar el modal
 async function showDetailModal(dateKey, indicators) {
     await fetchFinancialData();
-    const incomes = (window.financialData?.incomes || []).filter(i => i.date === dateKey);
-    const expenses = (window.financialData?.expenses || []).filter(e => e.date === dateKey);
+    // Ingresos: compara por .date o .income_date (solo la parte YYYY-MM-DD)
+    const incomes = (window.financialData?.incomes || []).filter(i =>
+        (i.date && i.date.substring(0, 10) === dateKey) ||
+        (i.income_date && i.income_date.substring(0, 10) === dateKey)
+    );
+    // Egresos: compara por .date o .next_date (solo la parte YYYY-MM-DD)
+    const expenses = (window.financialData?.expenses || []).filter(e =>
+        (e.date && e.date.substring(0, 10) === dateKey) ||
+        (e.next_date && e.next_date.substring(0, 10) === dateKey)
+    );
     const modal = new bootstrap.Modal(document.getElementById('detailModal'));
     // Balance
     const totalIncomes = incomes.reduce((a, b) => a + Number(b.amount), 0);
