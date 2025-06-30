@@ -42,13 +42,13 @@ class UserController extends Controller
     // Eliminar un usuario
     public function destroy($id)
     {
-        $user = PlatformUsers::findOrFail($id);    // Actualizar perfil del usuario autenticado
+        $user = PlatformUsers::findOrFail($id);
+        $user->delete();
+        return response()->json(['message' => 'Usuario eliminado']);
+    }
 
-
-
-
-
-}    }        return response()->json(['message' => 'Usuario eliminado']);        $user->delete();    public function updateProfile(Request $request)
+    // Actualizar perfil del usuario autenticado
+    public function updateProfile(Request $request)
     {
         $user = \App\Models\PlatformUsers::find(session('user_id'));
         if (!$user) {
