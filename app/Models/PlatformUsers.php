@@ -10,13 +10,13 @@ class PlatformUsers extends Model
     protected $primaryKey = 'user_id';
     public $timestamps = false;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password_hash',
-    ];
+    protected $fillable = ['name', 'email', 'password_hash'];
 
     // protected $hidden = [
     //     'password_hash',
     // ];
 }
+    // protected $hidden = [
+    //     'password_hash',
+    // ];
+
