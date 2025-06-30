@@ -1,3 +1,5 @@
+<?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
@@ -5,6 +7,11 @@ use App\Http\Controllers\FrequencyController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\AlertController;
+
+// Ruta de prueba para verificar que la API está funcionando
+Route::get('/', function () {
+    return response()->json(['message' => 'API OK']);
+});
 
 // Todas tus rutas API aquí, como ya tienes:
 Route::get('/users', [UserController::class, 'index']);
