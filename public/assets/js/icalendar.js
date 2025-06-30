@@ -83,21 +83,18 @@ function decorateCellWithIndicator(cell, indicators) {
 
 // Función auxiliar para aplicar los indicadores a las celdas
 function applyIndicatorsToCalendar(dateIndicators) {
-    // Selector para los días del calendario moderno
-    const calendarCells = document.querySelectorAll('.calendar-wrap td, .fc-daygrid-day'); // Ajusta según tu calendario
-
+    // Selector para los días del calendario
+    const calendarCells = document.querySelectorAll('.calendar-wrap td, #calendar tbody td');
     calendarCells.forEach(cell => {
         // Limpia decoraciones previas
         let deco = cell.querySelector('.indicator-svg');
         if (deco) deco.remove();
 
-        // Obtén el día (ajusta según el HTML generado por tu calendario)
+        // Obtén el día
         let dayText = cell.textContent.trim();
-        if (!dayText || isNaN(dayText)) return;
+        if (!dayText || isNaN(dayText) || cell.id === 'disabled') return;
 
-        // Si el calendario moderno usa atributos para la fecha, úsalos aquí
-        // let dateKey = cell.getAttribute('data-date'); // Ejemplo para FullCalendar
-        // Si no, usa el método anterior:
+        // Calcula la fecha
         const currentDate = getCurrentCalendarDate(parseInt(dayText));
         if (!currentDate) return;
         const dateKey = formatDateForComparison(currentDate);
@@ -105,8 +102,7 @@ function applyIndicatorsToCalendar(dateIndicators) {
 
         decorateCellWithIndicator(cell, indicators);
 
-        // Evento click para mostrar modal
-        cell.onclick = () => showDetailModal(dateKey, indicators);
+        // NO pongas aquí: cell.onclick = ...;
     });
 }
 

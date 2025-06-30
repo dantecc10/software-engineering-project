@@ -91,6 +91,17 @@
         selectedDay = new Date(year, month, o.innerHTML);
         this.drawHeader(o.innerHTML);
         this.setCookie('selected_day', 1);
+
+        // Mostrar el modal de detalle al dar click en el día
+        if (typeof showDetailModal === "function") {
+            // Formatea la fecha YYYY-MM-DD
+            const dateKey = [
+                year,
+                String(month + 1).padStart(2, '0'),
+                String(o.innerHTML).padStart(2, '0')
+            ].join('-');
+            showDetailModal(dateKey, null);
+        }
         
     };
     
