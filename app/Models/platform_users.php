@@ -16,21 +16,7 @@ class platform_users extends Model
         'password_hash',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password_hash',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 }

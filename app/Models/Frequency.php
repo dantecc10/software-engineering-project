@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Frequency extends Model
 {
-    protected $table = 'Frequency';
+    protected $table = 'frequencies';
     protected $primaryKey = 'frequency_id';
     public $timestamps = false;
 

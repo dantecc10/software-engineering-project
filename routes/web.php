@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrequencyController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\AlertController;
 
 // Ruta principal, muestra la vista de bienvenida
 Route::get('/', function () {
@@ -38,9 +43,44 @@ Route::get('/calendar', function () {
     return view('calendar');
 });
 
-// Rutas API para User
+// Rutas API para platform_users (usando UserController)
 Route::get('/api/users', [UserController::class, 'index']);
 Route::post('/api/users', [UserController::class, 'store']);
 Route::get('/api/users/{id}', [UserController::class, 'show']);
 Route::put('/api/users/{id}', [UserController::class, 'update']);
 Route::delete('/api/users/{id}', [UserController::class, 'destroy']);
+
+// Rutas API para categories
+Route::get('/api/categories', [CategoryController::class, 'index']);
+Route::post('/api/categories', [CategoryController::class, 'store']);
+Route::get('/api/categories/{id}', [CategoryController::class, 'show']);
+Route::put('/api/categories/{id}', [CategoryController::class, 'update']);
+Route::delete('/api/categories/{id}', [CategoryController::class, 'destroy']);
+
+// Rutas API para frequencies
+Route::get('/api/frequencies', [FrequencyController::class, 'index']);
+Route::post('/api/frequencies', [FrequencyController::class, 'store']);
+Route::get('/api/frequencies/{id}', [FrequencyController::class, 'show']);
+Route::put('/api/frequencies/{id}', [FrequencyController::class, 'update']);
+Route::delete('/api/frequencies/{id}', [FrequencyController::class, 'destroy']);
+
+// Rutas API para incomes
+Route::get('/api/incomes', [IncomeController::class, 'index']);
+Route::post('/api/incomes', [IncomeController::class, 'store']);
+Route::get('/api/incomes/{id}', [IncomeController::class, 'show']);
+Route::put('/api/incomes/{id}', [IncomeController::class, 'update']);
+Route::delete('/api/incomes/{id}', [IncomeController::class, 'destroy']);
+
+// Rutas API para expenses
+Route::get('/api/expenses', [ExpenseController::class, 'index']);
+Route::post('/api/expenses', [ExpenseController::class, 'store']);
+Route::get('/api/expenses/{id}', [ExpenseController::class, 'show']);
+Route::put('/api/expenses/{id}', [ExpenseController::class, 'update']);
+Route::delete('/api/expenses/{id}', [ExpenseController::class, 'destroy']);
+
+// Rutas API para alerts
+Route::get('/api/alerts', [AlertController::class, 'index']);
+Route::post('/api/alerts', [AlertController::class, 'store']);
+Route::get('/api/alerts/{id}', [AlertController::class, 'show']);
+Route::put('/api/alerts/{id}', [AlertController::class, 'update']);
+Route::delete('/api/alerts/{id}', [AlertController::class, 'destroy']);

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\platform_users; // Asegúrate de que este modelo exista y esté correctamente definido
+use App\Models\Platform_users; // Asegúrate de que este modelo exista y esté correctamente definido
 use Illuminate\Http\Request;
 
 class UserController extends Controller
