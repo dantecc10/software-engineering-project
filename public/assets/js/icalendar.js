@@ -353,12 +353,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const freqName = selectedFreqOption ? selectedFreqOption.getAttribute('data-name') : '';
             const catSelect = document.getElementById('expense-category');
             const catValue = catSelect.value;
-            const selectedCatOption = catSelect.options[catSelect.selectedIndex];
-            const catName = selectedCatOption ? selectedCatOption.text : '';
 
-            // Imprime los valores seleccionados en consola
-            console.log('frequency_id:', freqValue, 'frequency_name:', freqName);
-            console.log('category_id:', catValue, 'category_name:', catName);
+            // DEBUG extra: imprime typeof y valor real
+            console.log('frequency_id:', freqValue, 'typeof:', typeof freqValue, 'frequency_name:', freqName);
+            console.log('category_id:', catValue, 'typeof:', typeof catValue);
+
+            // Validación robusta: asegúrate que freqValue no sea vacío ni "null" ni "undefined"
+            if (!catValue || !freqValue || freqValue === "null" || freqValue === "undefined") {
+                alert('Selecciona una categoría y una frecuencia.');
+                return;
+            }
 
             const nextDateValue = freqName === 'Única vez' ? null : document.getElementById('expense-next-date').value;
             const data = {
@@ -370,10 +374,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 frequency_id: freqValue,
                 next_date: nextDateValue
             };
-            if (!data.category_id || !data.frequency_id) {
-                alert('Selecciona una categoría y una frecuencia.');
-                return;
-            }
             fetch('/expenses', {
                 method: 'POST',
                 headers: {
