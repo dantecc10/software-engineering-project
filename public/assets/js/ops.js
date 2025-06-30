@@ -1,17 +1,18 @@
+function getCsrfToken() {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    return meta ? meta.getAttribute('content') : '';
+}
+
 function createUser(name, email, password_hash) {
     return fetch('/users', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': getCsrfToken()
+        },
         body: JSON.stringify({ name, email, password_hash })
     }).then(response => response.json());
-}
-
-function getHeaders() {
-    return {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'X-CSRF-TOKEN': getCsrfToken()
-    };
 }
 
 document.getElementById('user-registration-form').addEventListener('submit', function(event) {

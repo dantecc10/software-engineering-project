@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <nav class="navbar navbar-expand-md fixed-top py-3 navbar-shrink" id="mainNav">
