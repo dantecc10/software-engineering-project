@@ -348,19 +348,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('addExpenseForm').onsubmit = function(e) {
             e.preventDefault();
             const freqSelect = document.getElementById('expense-frequency');
-            // Fuerza el value a número (por si viene como string)
-            const freqValue = Number(freqSelect.value);
+            // Lee el value como string, NO lo conviertas a Number aquí
+            const freqValue = freqSelect.value;
             const selectedFreqOption = freqSelect.options[freqSelect.selectedIndex];
             const freqName = selectedFreqOption ? selectedFreqOption.getAttribute('data-name') : '';
             const catSelect = document.getElementById('expense-category');
-            const catValue = Number(catSelect.value);
+            const catValue = catSelect.value;
 
             // Imprime los valores y tipos para depuración
             console.log('frequency_id:', freqValue, 'typeof:', typeof freqValue, 'frequency_name:', freqName);
             console.log('category_id:', catValue, 'typeof:', typeof catValue);
 
-            // Validación robusta: asegúrate que freqValue y catValue sean números válidos
-            if (!catValue || !freqValue) {
+            // Validación robusta: asegúrate que freqValue y catValue no sean vacíos ni "0"
+            if (!catValue || !freqValue || freqValue === "0" || catValue === "0") {
                 alert('Selecciona una categoría y una frecuencia.');
                 return;
             }
