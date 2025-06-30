@@ -6,7 +6,7 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\AlertController;
 
-// Aquí sí deben estar las rutas API, como ya tienes:
+// Todas tus rutas API aquí, como ya tienes:
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{id}', [UserController::class, 'show']);
