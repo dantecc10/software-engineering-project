@@ -316,7 +316,7 @@
                             <select class="form-select" id="expense-frequency" name="frequency_id" required>
                                 <option value="">Selecciona una frecuencia</option>
                                 @foreach($frequencies as $freq)
-                                    <option value="{{ $freq->id }}" data-name="{{ $freq->frequency_name }}">{{ $freq->frequency_name }}</option>
+                                    <option value="{{ $freq->frequency_id }}" data-name="{{ $freq->frequency_name }}">{{ $freq->frequency_name }}</option>
                                 @endforeach
                             </select>
                         </div>
