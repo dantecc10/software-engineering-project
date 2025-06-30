@@ -22,7 +22,13 @@ class IncomeController extends Controller
     // Crear un ingreso nuevo
     public function store(Request $request)
     {
-        $income = Income::create($request->only(['user_id', 'date', 'type', 'amount']));
+        $validated = $request->validate([
+            'user_id' => 'required|integer|exists:platform_users,user_id',
+            'date' => 'required|date',
+            'type' => 'nullable|string|max:50',
+            'amount' => 'required|numeric'
+        ]);
+        $income = Income::create($validated);
         return response()->json($income, 201);
     }
 
@@ -30,7 +36,13 @@ class IncomeController extends Controller
     public function update(Request $request, $id)
     {
         $income = Income::findOrFail($id);
-        $income->update($request->only(['user_id', 'date', 'type', 'amount']));
+        $validated = $request->validate([
+            'user_id' => 'required|integer|exists:platform_users,user_id',
+            'date' => 'required|date',
+            'type' => 'nullable|string|max:50',
+            'amount' => 'required|numeric'
+        ]);
+        $income->update($validated);
         return response()->json($income);
     }
 
