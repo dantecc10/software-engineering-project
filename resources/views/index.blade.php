@@ -36,28 +36,28 @@
                     <li class="nav-item"><a class="nav-link" href="{{ asset('calendar') }}">Calendario</a></li>
                 </ul>
                 @php
-                    $user = null;
-                    if(session('user_id')) {
-                        $user = \App\Models\PlatformUsers::find(session('user_id'));
-                    }
+                $user = null;
+                if(session('user_id')) {
+                $user = \App\Models\PlatformUsers::find(session('user_id'));
+                }
                 @endphp
                 @if($user)
-                    <div class="dropdown">
-                        <button class="btn btn-primary shadow dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ $user->name }}
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="{{ url('/profile') }}">Modificar perfil</a></li>
-                            <li>
-                                <form method="POST" action="{{ url('/logout') }}">
-                                    @csrf
-                                    <button class="dropdown-item" type="submit">Salir</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary shadow dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ $user->name }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{{ url('/profile') }}">Modificar perfil</a></li>
+                        <li>
+                            <form method="POST" action="{{ url('/logout') }}">
+                                @csrf
+                                <button class="dropdown-item" type="submit">Salir</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
                 @else
-                    <a class="btn btn-primary shadow" role="button" href="{{ asset('login') }}">Iniciar sesión</a>
+                <a class="btn btn-primary shadow" role="button" href="{{ asset('profile') }}">Dante</a>
                 @endif
             </div>
         </div>
