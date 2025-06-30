@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class platform_users extends Model
+class PlatformUsers extends Model
 {
     protected $table = 'platform_users';
     protected $primaryKey = 'user_id';
