@@ -247,10 +247,78 @@ function drawPieChart(canvas, chartData) {
 
 // Hooks para añadir ingreso/egreso (puedes personalizar)
 window.addIncomeForDate = function(dateKey) {
-    alert('Redirigir a formulario de ingreso para ' + dateKey);
-    // Aquí puedes abrir tu formulario real
+    // Rellena la fecha y muestra el modal
+    document.getElementById('income-date').value = dateKey;
+    var modal = new bootstrap.Modal(document.getElementById('addIncomeModal'));
+    modal.show();
 };
 window.addExpenseForDate = function(dateKey) {
-    alert('Redirigir a formulario de egreso para ' + dateKey);
-    // Aquí puedes abrir tu formulario real
+    // Rellena la fecha y muestra el modal
+    document.getElementById('expense-date').value = dateKey;
+    var modal = new bootstrap.Modal(document.getElementById('addExpenseModal'));
+    modal.show();
 };
+
+// Envío AJAX para ingreso
+document.addEventListener('DOMContentLoaded', function() {
+    // ...existing code...
+    document.getElementById('addIncomeForm').onsubmit = function(e) {
+        e.preventDefault();
+        const data = {
+            user_id: window.userId || 1, // Ajusta según tu lógica de usuario
+            date: document.getElementById('income-date').value,
+            type: document.getElementById('income-type').value,
+            amount: parseFloat(document.getElementById('income-amount').value)
+        };
+        fetch('/incomes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.id || res.income_id) {
+                alert('Ingreso registrado correctamente');
+                bootstrap.Modal.getInstance(document.getElementById('addIncomeModal')).hide();
+            } else {
+                alert('Error al registrar ingreso');
+            }
+        })
+        .catch(() => alert('Error al registrar ingreso'));
+    };
+
+    // Envío AJAX para egreso
+    document.getElementById('addExpenseForm').onsubmit = function(e) {
+        e.preventDefault();
+        const data = {
+            user_id: window.userId || 1, // Ajusta según tu lógica de usuario
+            date: document.getElementById('expense-date').value,
+            category: document.getElementById('expense-category').value,
+            description: document.getElementById('expense-description').value,
+            amount: parseFloat(document.getElementById('expense-amount').value),
+            frequency: document.getElementById('expense-frequency').value,
+            next_date: document.getElementById('expense-next-date').value
+        };
+        fetch('/expenses', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.id || res.expense_id) {
+                alert('Egreso registrado correctamente');
+                bootstrap.Modal.getInstance(document.getElementById('addExpenseModal')).hide();
+            } else {
+                alert('Error al registrar egreso');
+            }
+        })
+        .catch(() => alert('Error al registrar egreso'));
+    };
+});

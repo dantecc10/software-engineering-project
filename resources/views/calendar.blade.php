@@ -17,12 +17,41 @@
 <body>
     <!-- Start: Navbar Centered Links -->
     <nav class="navbar navbar-expand-md fixed-top py-3 navbar-shrink" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ asset('/') }}"><span>Cash Flow</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ asset('/') }}"><span>Cash Flow</span></a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ asset('/index') }}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ asset('calendar') }}">Calendario</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="{{ asset('login') }}">Iniciar sesión</a>
+                </ul>
+                @php
+                $user = null;
+                if(session('user_id')) {
+                    $user = \App\Models\PlatformUsers::find(session('user_id'));
+                }
+                @endphp
+                @if($user)
+                <div class="dropdown">
+                    <button class="btn btn-primary shadow dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ $user->name }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{{ url('/profile') }}">Modificar perfil</a></li>
+                        <li>
+                            <form method="POST" action="{{ url('/logout') }}">
+                                @csrf
+                                <button class="dropdown-item" type="submit">Salir</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                @else
+                <a class="btn btn-primary shadow" role="button" href="{{ asset('login') }}">Iniciar sesión</a>
+                @endif
             </div>
         </div>
     </nav><!-- End: Navbar Centered Links -->
@@ -215,6 +244,76 @@
                         <button class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <!-- Modal: Añadir Ingreso -->
+        <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="addIncomeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form id="addIncomeForm" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addIncomeModalLabel">Añadir ingreso</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="income-date" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="income-date" name="date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="income-type" class="form-label">Tipo</label>
+                            <input type="text" class="form-control" id="income-type" name="type" maxlength="50" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="income-amount" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" id="income-amount" name="amount" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Guardar ingreso</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Modal: Añadir Egreso -->
+        <div class="modal fade" id="addExpenseModal" tabindex="-1" aria-labelledby="addExpenseModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form id="addExpenseForm" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addExpenseModalLabel">Añadir egreso</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="expense-date" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="expense-date" name="date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expense-category" class="form-label">Categoría</label>
+                            <input type="text" class="form-control" id="expense-category" name="category" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expense-description" class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="expense-description" name="description" maxlength="255" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expense-amount" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" id="expense-amount" name="amount" step="0.01" min="0" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expense-frequency" class="form-label">Frecuencia</label>
+                            <input type="text" class="form-control" id="expense-frequency" name="frequency" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expense-next-date" class="form-label">Próxima fecha</label>
+                            <input type="date" class="form-control" id="expense-next-date" name="next_date">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Guardar egreso</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section><!-- Start: Footer Multi Column -->
