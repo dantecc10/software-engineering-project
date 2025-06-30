@@ -1,4 +1,4 @@
-w// Obtener el token CSRF del meta tag (asegúrate de tener <meta name="csrf-token" content="{{ csrf_token() }}"> en tu <head>)
+// Obtener el token CSRF del meta tag (asegúrate de tener <meta name="csrf-token" content="{{ csrf_token() }}"> en tu <head>)
 function getCsrfToken() {
     const meta = document.querySelector('meta[name="csrf-token"]');
     return meta ? meta.getAttribute('content') : '';
@@ -15,19 +15,19 @@ function getHeaders() {
 // ===================== USER =====================
 // Obtener todos los usuarios
 function fetchUsers() {
-    return fetch('/api/users')
+    return fetch('/users')
         .then(response => response.json());
 }
 
 // Obtener un usuario por ID
 function fetchUserById(id) {
-    return fetch(`/api/users/${id}`)
+    return fetch(`/users/${id}`)
         .then(response => response.json());
 }
 
 // Crear un usuario nuevo
 function createUser(name, email, password_hash) {
-    return fetch('/api/users', {
+    return fetch('/users', {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ name, email, password_hash })
@@ -36,7 +36,7 @@ function createUser(name, email, password_hash) {
 
 // Actualizar un usuario
 function updateUser(id, name, email, password_hash) {
-    return fetch(`/api/users/${id}`, {
+    return fetch(`/users/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify({ name, email, password_hash })
@@ -45,7 +45,7 @@ function updateUser(id, name, email, password_hash) {
 
 // Eliminar un usuario
 function deleteUser(id) {
-    return fetch(`/api/users/${id}`, {
+    return fetch(`/users/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     }).then(response => response.json());
@@ -54,19 +54,19 @@ function deleteUser(id) {
 // ===================== CATEGORY =====================
 // Obtener todas las categorías
 function fetchCategories() {
-    return fetch('/api/categories')
+    return fetch('/categories')
         .then(response => response.json());
 }
 
 // Obtener una categoría por ID
 function fetchCategoryById(id) {
-    return fetch(`/api/categories/${id}`)
+    return fetch(`/categories/${id}`)
         .then(response => response.json());
 }
 
 // Crear una categoría nueva
 function createCategory(category_name) {
-    return fetch('/api/categories', {
+    return fetch('/categories', {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ category_name })
@@ -75,7 +75,7 @@ function createCategory(category_name) {
 
 // Actualizar una categoría
 function updateCategory(id, category_name) {
-    return fetch(`/api/categories/${id}`, {
+    return fetch(`/categories/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify({ category_name })
@@ -84,7 +84,7 @@ function updateCategory(id, category_name) {
 
 // Eliminar una categoría
 function deleteCategory(id) {
-    return fetch(`/api/categories/${id}`, {
+    return fetch(`/categories/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     }).then(response => response.json());
@@ -93,19 +93,19 @@ function deleteCategory(id) {
 // ===================== FREQUENCY =====================
 // Obtener todas las frecuencias
 function fetchFrequencies() {
-    return fetch('/api/frequencies')
+    return fetch('/frequencies')
         .then(response => response.json());
 }
 
 // Obtener una frecuencia por ID
 function fetchFrequencyById(id) {
-    return fetch(`/api/frequencies/${id}`)
+    return fetch(`/frequencies/${id}`)
         .then(response => response.json());
 }
 
 // Crear una frecuencia nueva
 function createFrequency(frequency_name) {
-    return fetch('/api/frequencies', {
+    return fetch('/frequencies', {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ frequency_name })
@@ -114,7 +114,7 @@ function createFrequency(frequency_name) {
 
 // Actualizar una frecuencia
 function updateFrequency(id, frequency_name) {
-    return fetch(`/api/frequencies/${id}`, {
+    return fetch(`/frequencies/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify({ frequency_name })
@@ -123,7 +123,7 @@ function updateFrequency(id, frequency_name) {
 
 // Eliminar una frecuencia
 function deleteFrequency(id) {
-    return fetch(`/api/frequencies/${id}`, {
+    return fetch(`/frequencies/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     }).then(response => response.json());
@@ -132,19 +132,19 @@ function deleteFrequency(id) {
 // ===================== INCOME =====================
 // Obtener todos los ingresos
 function fetchIncomes() {
-    return fetch('/api/incomes')
+    return fetch('/incomes')
         .then(response => response.json());
 }
 
 // Obtener un ingreso por ID
 function fetchIncomeById(id) {
-    return fetch(`/api/incomes/${id}`)
+    return fetch(`/incomes/${id}`)
         .then(response => response.json());
 }
 
 // Crear un ingreso nuevo
 function createIncome(user_id, date, type, amount) {
-    return fetch('/api/incomes', {
+    return fetch('/incomes', {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ user_id, date, type, amount })
@@ -153,7 +153,7 @@ function createIncome(user_id, date, type, amount) {
 
 // Actualizar un ingreso
 function updateIncome(id, user_id, date, type, amount) {
-    return fetch(`/api/incomes/${id}`, {
+    return fetch(`/incomes/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify({ user_id, date, type, amount })
@@ -162,7 +162,7 @@ function updateIncome(id, user_id, date, type, amount) {
 
 // Eliminar un ingreso
 function deleteIncome(id) {
-    return fetch(`/api/incomes/${id}`, {
+    return fetch(`/incomes/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     }).then(response => response.json());
@@ -171,19 +171,19 @@ function deleteIncome(id) {
 // ===================== EXPENSE =====================
 // Obtener todos los gastos
 function fetchExpenses() {
-    return fetch('/api/expenses')
+    return fetch('/expenses')
         .then(response => response.json());
 }
 
 // Obtener un gasto por ID
 function fetchExpenseById(id) {
-    return fetch(`/api/expenses/${id}`)
+    return fetch(`/expenses/${id}`)
         .then(response => response.json());
 }
 
 // Crear un gasto nuevo
 function createExpense(user_id, category_id, description, date, amount, frequency_id, next_date) {
-    return fetch('/api/expenses', {
+    return fetch('/expenses', {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ user_id, category_id, description, date, amount, frequency_id, next_date })
@@ -192,7 +192,7 @@ function createExpense(user_id, category_id, description, date, amount, frequenc
 
 // Actualizar un gasto
 function updateExpense(id, user_id, category_id, description, date, amount, frequency_id, next_date) {
-    return fetch(`/api/expenses/${id}`, {
+    return fetch(`/expenses/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify({ user_id, category_id, description, date, amount, frequency_id, next_date })
@@ -201,7 +201,7 @@ function updateExpense(id, user_id, category_id, description, date, amount, freq
 
 // Eliminar un gasto
 function deleteExpense(id) {
-    return fetch(`/api/expenses/${id}`, {
+    return fetch(`/expenses/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     }).then(response => response.json());
@@ -210,19 +210,19 @@ function deleteExpense(id) {
 // ===================== ALERT =====================
 // Obtener todas las alertas
 function fetchAlerts() {
-    return fetch('/api/alerts')
+    return fetch('/alerts')
         .then(response => response.json());
 }
 
 // Obtener una alerta por ID
 function fetchAlertById(id) {
-    return fetch(`/api/alerts/${id}`)
+    return fetch(`/alerts/${id}`)
         .then(response => response.json());
 }
 
 // Crear una alerta nueva
 function createAlert(user_id, message, scheduled_date, active) {
-    return fetch('/api/alerts', {
+    return fetch('/alerts', {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ user_id, message, scheduled_date, active })
@@ -231,7 +231,7 @@ function createAlert(user_id, message, scheduled_date, active) {
 
 // Actualizar una alerta
 function updateAlert(id, user_id, message, scheduled_date, active) {
-    return fetch(`/api/alerts/${id}`, {
+    return fetch(`/alerts/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify({ user_id, message, scheduled_date, active })
@@ -240,7 +240,7 @@ function updateAlert(id, user_id, message, scheduled_date, active) {
 
 // Eliminar una alerta
 function deleteAlert(id) {
-    return fetch(`/api/alerts/${id}`, {
+    return fetch(`/alerts/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     }).then(response => response.json());
