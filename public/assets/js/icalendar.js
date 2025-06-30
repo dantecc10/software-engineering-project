@@ -182,64 +182,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Muestra el modal de detalle para el día seleccionado
 function showDetailModal(dateKey, indicators) {
-    // Busca registros para ese día
     const incomes = (window.financialData?.incomes || []).filter(i => i.date === dateKey);
     const expenses = (window.financialData?.expenses || []).filter(e => e.date === dateKey);
     const modal = new bootstrap.Modal(document.getElementById('detailModal'));
-    const contentDiv = document.getElementById('detailModalContent');
-    const footerDiv = document.getElementById('detailModalFooter');
-    const chartCanvas = document.getElementById('detailPieChart');
-    let html = '';
-    let footer = '';
-    let chartData = null;
-
-    if ((incomes.length + expenses.length) > 0) {
-        html += `<p class="mb-2">Movimientos del <b>${dateKey}</b>:</p>`;
-        if (incomes.length) {
-            html += `<h6 class="text-success">Ingresos</h6><ul>`;
-            incomes.forEach(i => html += `<li>${i.type || 'Ingreso'}: $${i.amount.toFixed(2)}</li>`);
-            html += `</ul>`;
-        }
-        if (expenses.length) {
-            html += `<h6 class="text-danger">Egresos</h6><ul>`;
-            expenses.forEach(e => html += `<li>${e.description || 'Egreso'}: $${e.amount.toFixed(2)}</li>`);
-            html += `</ul>`;
-        }
-        chartData = {
-            labels: [],
-            data: [],
-            colors: []
-        };
-        if (incomes.length) {
-            chartData.labels.push('Ingresos');
-            chartData.data.push(incomes.reduce((a, b) => a + b.amount, 0));
-            chartData.colors.push('#28a745');
-        }
-        if (expenses.length) {
-            chartData.labels.push('Egresos');
-            chartData.data.push(expenses.reduce((a, b) => a + b.amount, 0));
-            chartData.colors.push('#dc3545');
-        }
-        chartCanvas.style.display = '';
-        footer = `<button class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>`;
+    // Balance
+    const totalIncomes = incomes.reduce((a, b) => a + b.amount, 0);
+    const totalExpenses = expenses.reduce((a, b) => a + b.amount, 0);
+    // Mensaje balance
+    let msg = '';
+    if (totalIncomes > totalExpenses) {
+        msg = '<span class="text-success">Tienes más ingresos que gastos... ¡genial!</span>';
+    } else if (totalExpenses > totalIncomes) {
+        msg = '<span class="text-danger">Tienes más gastos que ingresos. Hay que trabajar en eso...</span>';
     } else {
-        html = `<p>No hay movimientos registrados para <b>${dateKey}</b>.</p>
-                <p>¿Deseas añadir un ingreso o egreso?</p>`;
-        chartCanvas.style.display = 'none';
-        footer = `
-            <button class="btn btn-success" onclick="addIncomeForDate('${dateKey}')">Añadir ingreso</button>
-            <button class="btn btn-danger" onclick="addExpenseForDate('${dateKey}')">Añadir egreso</button>
-            <button class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-        `;
+        msg = 'Tus gastos e ingresos son iguales. Lo ideal es gastar menos de lo que se recibe para ahorrar un poco.';
     }
-    contentDiv.innerHTML = html;
-    footerDiv.innerHTML = footer;
-
-    // Dibuja el gráfico si hay datos
-    if (chartData) {
-        drawPieChart(chartCanvas, chartData);
-    } else if (window.detailPieChartInstance) {
-        window.detailPieChartInstance.destroy();
+    document.getElementById('balanceMessage').innerHTML = msg;
+    // Gráfico
+    drawPieChart(document.getElementById('detailPieChart'), {
+        labels: ['Ingresos', 'Gastos'],
+        data: [totalIncomes, totalExpenses],
+        colors: ['#28a745', '#dc3545']
+    });
+    // Ingresos
+    const incomesList = document.getElementById('incomesList');
+    incomesList.innerHTML = incomes.length
+        ? incomes.map(i => `<li>${i.type || 'Ingreso'}: $${i.amount.toFixed(2)}</li>`).join('')
+        : '<li class="text-muted">Sin ingresos registrados</li>';
+    // Egresos
+    const expensesList = document.getElementById('expensesList');
+    expensesList.innerHTML = expenses.length
+        ? expenses.map(e => `<li>${e.description || 'Egreso'}: $${e.amount.toFixed(2)}</li>`).join('')
+        : '<li class="text-muted">Sin egresos registrados</li>';
+    // Añadir
+    document.getElementById('addIncomeBtn').onclick = () => window.addIncomeForDate(dateKey);
+    document.getElementById('addExpenseBtn').onclick = () => window.addExpenseForDate(dateKey);
+    // Si no hay movimientos, activa pestaña "Añadir"
+    if (incomes.length === 0 && expenses.length === 0) {
+        new bootstrap.Tab(document.getElementById('tab-add')).show();
+    } else {
+        new bootstrap.Tab(document.getElementById('tab-balance')).show();
     }
     modal.show();
 }

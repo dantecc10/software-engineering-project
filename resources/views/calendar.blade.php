@@ -194,24 +194,52 @@
                 </div>
             </div>
         </div>
-        <!-- Modal de detalle -->
+        <!-- Modal de detalle con pestañas -->
         <div class="modal fade" role="dialog" tabindex="-1" id="detailModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title fw-bolder" id="detailModalTitle">Balance detallado</h4>
+                        <h4 class="modal-title fw-bolder" id="detailModalTitle">Detalle del día</h4>
                         <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <div id="detailModalContent">
-                            <!-- Aquí se inyecta el contenido dinámicamente -->
-                        </div>
-                        <div class="my-3">
-                            <canvas id="detailPieChart" width="200" height="200" style="display:none;"></canvas>
+                        <ul class="nav nav-tabs mb-3" id="detailTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="tab-balance" data-bs-toggle="tab" data-bs-target="#tabContent-balance" type="button" role="tab">Balance</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab-incomes" data-bs-toggle="tab" data-bs-target="#tabContent-incomes" type="button" role="tab">Ingresos</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab-expenses" data-bs-toggle="tab" data-bs-target="#tabContent-expenses" type="button" role="tab">Egresos</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab-add" data-bs-toggle="tab" data-bs-target="#tabContent-add" type="button" role="tab">Añadir</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="detailTabContent">
+                            <div class="tab-pane fade show active" id="tabContent-balance" role="tabpanel">
+                                <div id="balanceMessage" class="mb-2"></div>
+                                <div class="my-3 text-center">
+                                    <canvas id="detailPieChart" width="200" height="200"></canvas>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tabContent-incomes" role="tabpanel">
+                                <ul id="incomesList"></ul>
+                            </div>
+                            <div class="tab-pane fade" id="tabContent-expenses" role="tabpanel">
+                                <ul id="expensesList"></ul>
+                            </div>
+                            <div class="tab-pane fade" id="tabContent-add" role="tabpanel">
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <button class="btn btn-success w-75" id="addIncomeBtn">Añadir ingreso</button>
+                                    <button class="btn btn-danger w-75" id="addExpenseBtn">Añadir egreso</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer" id="detailModalFooter">
-                        <!-- Botones dinámicos -->
+                        <button class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
