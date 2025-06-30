@@ -6,6 +6,7 @@ function getCsrfToken() {
 function createUser(name, email, password_hash) {
     return fetch('/api/users', {
         method: 'POST',
+        credentials: 'same-origin', // <-- Esto es importante para enviar cookies de sesión
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
