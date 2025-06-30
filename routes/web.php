@@ -8,6 +8,8 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\AlertController;
 use App\Http\Controllers\AuthController;
+use App\Models\Category;
+use App\Models\Frequency;
 
 // Ruta principal, muestra la vista de bienvenida
 Route::get('/', function () {
@@ -44,7 +46,9 @@ Route::get('/signup', function () {
 
 // Ruta para la vista de calendario
 Route::get('/calendar', function () {
-    return view('calendar');
+    $categories = \App\Models\Category::all();
+    $frequencies = \App\Models\Frequency::all();
+    return view('calendar', compact('categories', 'frequencies'));
 });
 
 // Ruta para el testimonials
