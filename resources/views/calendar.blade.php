@@ -293,16 +293,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="expense-category" class="form-label">Categoría</label>
-                            <select class="form-select" id="expense-category" name="category" required>
+                            <select class="form-select" id="expense-category" name="category_id" required>
                                 <option value="">Selecciona una categoría</option>
-                                <option value="Alimentación">Alimentación</option>
-                                <option value="Transporte">Transporte</option>
-                                <option value="Entretenimiento">Entretenimiento</option>
-                                <option value="Salud">Salud</option>
-                                <option value="Educación">Educación</option>
-                                <option value="Servicios">Servicios</option>
-                                <option value="Renta">Renta</option>
-                                <option value="Otros">Otros</option>
+                                @foreach($categories as $cat)
+                                    <option value="{{ $cat->category_id }}">{{ $cat->category_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
@@ -319,12 +314,10 @@
                         <div class="mb-3">
                             <label for="expense-frequency" class="form-label">Frecuencia</label>
                             <select class="form-select" id="expense-frequency" name="frequency" required>
-                                <option value="Única vez">Única vez</option>
-                                <option value="Diario">Diario</option>
-                                <option value="Semanal">Semanal</option>
-                                <option value="Quincenal">Quincenal</option>
-                                <option value="Mensual">Mensual</option>
-                                <option value="Anual">Anual</option>
+                                <option value="">Selecciona una frecuencia</option>
+                                @foreach($frequencies as $freq)
+                                    <option value="{{ $freq->id }}">{{ $freq->frequency_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3" id="expense-next-date-group">

@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = {
                 user_id: window.userId || 1,
                 date: document.getElementById('expense-date').value,
-                category: document.getElementById('expense-category').value,
+                category_id: document.getElementById('expense-category').value, // <-- usa category_id
                 description: document.getElementById('expense-description').value,
                 amount: parseFloat(document.getElementById('expense-amount').value),
                 frequency: freqValue,
