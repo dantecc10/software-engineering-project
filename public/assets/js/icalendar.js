@@ -198,10 +198,10 @@ async function showDetailModal(dateKey, indicators) {
 
     // Helper para comparar solo la parte de la fecha
     function matchDate(obj, ...fields) {
-        return fields.some(f => obj[f] && obj[f].substring(0, 10) === dateKey);
+        return fields.some(f => obj[f] && obj[f].toString().substring(0, 10) === dateKey);
     }
 
-    // Ingresos: busca por .date, .income_date, .created_at
+    // Ingresos: busca por .date, .income_date, .created_at, y convierte a string por si viene como Date
     const incomes = (window.financialData?.incomes || []).filter(i =>
         matchDate(i, 'date', 'income_date', 'created_at')
     );
@@ -209,6 +209,9 @@ async function showDetailModal(dateKey, indicators) {
     const expenses = (window.financialData?.expenses || []).filter(e =>
         matchDate(e, 'date', 'next_date', 'created_at')
     );
+
+    // DEBUG: muestra en consola los ingresos filtrados y los originales
+    // console.log('dateKey:', dateKey, 'incomes:', window.financialData?.incomes, 'filtered:', incomes);
 
     const modal = new bootstrap.Modal(document.getElementById('detailModal'));
     // Balance
