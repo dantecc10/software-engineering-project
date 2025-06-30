@@ -4,7 +4,6 @@ function getCsrfToken() {
     return meta ? meta.getAttribute('content') : '';
 }
 
-// Helper para headers con CSRF
 function getHeaders() {
     return {
         'Content-Type': 'application/json',
@@ -343,4 +342,5 @@ function deleteAlert(id) {
 // updateAlert(1, 1, 'Pago actualizado', '2024-06-11 10:00:00', false).then(console.log);
 
 // Eliminar alerta
+// deleteAlert(1).then(console.log);
 // deleteAlert(1).then(console.log);
