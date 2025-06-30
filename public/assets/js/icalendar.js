@@ -224,12 +224,18 @@ async function showDetailModal(dateKey, indicators) {
     // Ingresos
     const incomesList = document.getElementById('incomesList');
     incomesList.innerHTML = incomes.length
-        ? incomes.map(i => `<li>${i.type || 'Ingreso'}: $${i.amount.toFixed(2)}</li>`).join('')
+        ? incomes.map(i => {
+            let amt = Number(i.amount);
+            return `<li>${i.type || 'Ingreso'}: $${isNaN(amt) ? '0.00' : amt.toFixed(2)}</li>`;
+        }).join('')
         : '<li class="text-muted">Sin ingresos registrados</li>';
     // Egresos
     const expensesList = document.getElementById('expensesList');
     expensesList.innerHTML = expenses.length
-        ? expenses.map(e => `<li>${e.description || 'Egreso'}: $${e.amount.toFixed(2)}</li>`).join('')
+        ? expenses.map(e => {
+            let amt = Number(e.amount);
+            return `<li>${e.description || 'Egreso'}: $${isNaN(amt) ? '0.00' : amt.toFixed(2)}</li>`;
+        }).join('')
         : '<li class="text-muted">Sin egresos registrados</li>';
     // Añadir
     document.getElementById('addIncomeBtn').onclick = () => window.addIncomeForDate(dateKey);
@@ -306,42 +312,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Error al registrar ingreso');
             }
         })
-        .catch(() => alert('Error al registrar ingreso'));
-    };
-
-    document.getElementById('addExpenseForm').onsubmit = function(e) {
-        e.preventDefault();
-        const data = {
-            user_id: window.userId || 1,
-            date: document.getElementById('expense-date').value,
-            category: document.getElementById('expense-category').value,
-            description: document.getElementById('expense-description').value,
-            amount: parseFloat(document.getElementById('expense-amount').value),
-            frequency: document.getElementById('expense-frequency').value,
-            next_date: document.getElementById('expense-next-date').value
+            .catch(() => alert('Error al registrar ingreso'));
         };
-        fetch('/expenses', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            },
-            body: JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(async res => {
-            if (res.id || res.expense_id) {
-                alert('Egreso registrado correctamente');
-                bootstrap.Modal.getInstance(document.getElementById('addExpenseModal')).hide();
-                await fetchFinancialData();
-                setTimeout(() => showDetailModal(data.date), 200);
-            } else {
-                alert('Error al registrar egreso');
-            }
-        })
-        .catch(() => alert('Error al registrar egreso'));
-    };
-});
+    
+        document.getElementById('addExpenseForm').onsubmit = function(e) {
+            e.preventDefault();
+            const data = {
+                user_id: window.userId || 1,
+                date: document.getElementById('expense-date').value,
+                category: document.getElementById('expense-category').value,
+                description: document.getElementById('expense-description').value,
+                amount: parseFloat(document.getElementById('expense-amount').value),
+                frequency: document.getElementById('expense-frequency').value,
+                next_date: document.getElementById('expense-next-date').value
+            };
+            fetch('/expenses', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(async res => {
+                if (res.id || res.expense_id) {
+                    alert('Egreso registrado correctamente');
+                    bootstrap.Modal.getInstance(document.getElementById('addExpenseModal')).hide();
+                    await fetchFinancialData();
+                    setTimeout(() => showDetailModal(data.date), 200);
+                } else {
+                    alert('Error al registrar egreso');
+                }
+            })
+            .catch(() => alert('Error al registrar egreso'));
+        };
+    });
 
 // Al cargar la página, carga los datos reales del usuario
 document.addEventListener('DOMContentLoaded', function() {

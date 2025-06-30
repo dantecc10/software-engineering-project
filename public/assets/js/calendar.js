@@ -112,10 +112,12 @@
         }else{
             month = month - 1;
         }
+        window.year = year;
+        window.month = month;
         this.drawHeader(1);
         this.drawDays();
     };
-    
+
     Calendar.prototype.nextMonth = function() {
         if(month >= 11){
             month = 0;
@@ -123,6 +125,8 @@
         }else{
             month = month + 1;
         }
+        window.year = year;
+        window.month = month;
         this.drawHeader(1);
         this.drawDays();
     };
