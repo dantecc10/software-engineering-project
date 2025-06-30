@@ -347,17 +347,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
         document.getElementById('addExpenseForm').onsubmit = function(e) {
             e.preventDefault();
-            const freqValue = document.getElementById('expense-frequency').value;
-            const nextDateValue = freqValue === 'Única vez' ? null : document.getElementById('expense-next-date').value;
+            const freqSelect = document.getElementById('expense-frequency');
+            const freqValue = freqSelect.value;
+            const nextDateValue = (() => {
+                // Detecta por nombre, no solo por valor
+                const selected = freqSelect.options[freqSelect.selectedIndex];
+                const freqName = selected ? selected.getAttribute('data-name') : '';
+                return freqName === 'Única vez' ? null : document.getElementById('expense-next-date').value;
+            })();
             const data = {
                 user_id: window.userId || 1,
                 date: document.getElementById('expense-date').value,
                 category_id: document.getElementById('expense-category').value,
                 description: document.getElementById('expense-description').value,
                 amount: parseFloat(document.getElementById('expense-amount').value),
-                frequency_id: document.getElementById('expense-frequency').value, // <-- usa frequency_id
+                frequency_id: freqValue,
                 next_date: nextDateValue
             };
+            // Validación rápida para evitar enviar campos vacíos
+            if (!data.category_id || !data.frequency_id) {
+                alert('Selecciona una categoría y una frecuencia.');
+                return;
+            }
             fetch('/expenses', {
                 method: 'POST',
                 headers: {
@@ -366,15 +377,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify(data)
             })
-            .then(res => res.json())
             .then(async res => {
-                if (res.id || res.expense_id) {
+                // Si el backend responde con error 500, intenta leer el mensaje
+                let json;
+                try { json = await res.json(); } catch { json = {}; }
+                if (res.ok && (json.id || json.expense_id)) {
                     alert('Egreso registrado correctamente');
                     bootstrap.Modal.getInstance(document.getElementById('addExpenseModal')).hide();
                     await fetchFinancialData();
                     setTimeout(() => showDetailModal(data.date), 200);
                 } else {
-                    alert('Error al registrar egreso');
+                    alert('Error al registrar egreso: ' + (json.message || res.statusText));
                 }
             })
             .catch(() => alert('Error al registrar egreso'));
