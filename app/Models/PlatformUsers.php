@@ -16,7 +16,7 @@ class PlatformUsers extends Model
         'password_hash',
     ];
 
-    protected $hidden = [
-        'password_hash',
-    ];
+    // protected $hidden = [
+    //     'password_hash',
+    // ];
 }

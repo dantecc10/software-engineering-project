@@ -22,7 +22,12 @@ class UserController extends Controller
     // Crear un usuario nuevo
     public function store(Request $request)
     {
-        $user = PlatformUsers::create($request->only(['name', 'email', 'password_hash']));
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:platform_users,email',
+            'password_hash' => 'required|string|min:3'
+        ]);
+        $user = PlatformUsers::create($validated);
         return response()->json($user, 201);
     }
 
@@ -37,8 +42,32 @@ class UserController extends Controller
     // Eliminar un usuario
     public function destroy($id)
     {
-        $user = PlatformUsers::findOrFail($id);
-        $user->delete();
-        return response()->json(['message' => 'Usuario eliminado']);
+        $user = PlatformUsers::findOrFail($id);    // Actualizar perfil del usuario autenticado
+
+
+
+
+
+}    }        return response()->json(['message' => 'Usuario eliminado']);        $user->delete();    public function updateProfile(Request $request)
+    {
+        $user = \App\Models\PlatformUsers::find(session('user_id'));
+        if (!$user) {
+            return redirect('/profile')->withErrors(['msg' => 'Usuario no encontrado']);
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'nullable|string|min:3'
+        ]);
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        if (!empty($validated['password'])) {
+            $user->password_hash = $validated['password'];
+        }
+        $user->save();
+
+        return redirect('/profile')->with('success', 'Perfil actualizado correctamente');
     }
 }
