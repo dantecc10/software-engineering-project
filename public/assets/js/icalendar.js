@@ -352,10 +352,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = {
                 user_id: window.userId || 1,
                 date: document.getElementById('expense-date').value,
-                category_id: document.getElementById('expense-category').value, // <-- usa category_id
+                category_id: document.getElementById('expense-category').value,
                 description: document.getElementById('expense-description').value,
                 amount: parseFloat(document.getElementById('expense-amount').value),
-                frequency: freqValue,
+                frequency_id: document.getElementById('expense-frequency').value, // <-- usa frequency_id
                 next_date: nextDateValue
             };
             fetch('/expenses', {
