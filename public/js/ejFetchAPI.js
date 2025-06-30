@@ -1,4 +1,4 @@
-// Obtener el token CSRF del meta tag (asegúrate de tener <meta name="csrf-token" content="{{ csrf_token() }}"> en tu <head>)
+w// Obtener el token CSRF del meta tag (asegúrate de tener <meta name="csrf-token" content="{{ csrf_token() }}"> en tu <head>)
 function getCsrfToken() {
     const meta = document.querySelector('meta[name="csrf-token"]');
     return meta ? meta.getAttribute('content') : '';
