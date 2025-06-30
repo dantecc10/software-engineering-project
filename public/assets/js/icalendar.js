@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('addIncomeForm').onsubmit = function(e) {
         e.preventDefault();
         const data = {
-            user_id: window.userId || 1, // Ajusta según tu lógica de usuario
+            user_id: window.userId || 1,
             date: document.getElementById('income-date').value,
             type: document.getElementById('income-type').value,
             amount: parseFloat(document.getElementById('income-amount').value)
@@ -283,6 +283,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (res.id || res.income_id) {
                 alert('Ingreso registrado correctamente');
                 bootstrap.Modal.getInstance(document.getElementById('addIncomeModal')).hide();
+                // Actualizar datos en memoria
+                if (!window.financialData) window.financialData = { incomes: [], expenses: [] };
+                window.financialData.incomes.push({
+                    date: data.date,
+                    amount: data.amount,
+                    type: data.type
+                });
+                // Refrescar indicadores y detalles
+                addCalendarIndicators(window.financialData);
+                setTimeout(() => showDetailModal(data.date), 200);
             } else {
                 alert('Error al registrar ingreso');
             }
@@ -290,11 +300,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(() => alert('Error al registrar ingreso'));
     };
 
-    // Envío AJAX para egreso
     document.getElementById('addExpenseForm').onsubmit = function(e) {
         e.preventDefault();
         const data = {
-            user_id: window.userId || 1, // Ajusta según tu lógica de usuario
+            user_id: window.userId || 1,
             date: document.getElementById('expense-date').value,
             category: document.getElementById('expense-category').value,
             description: document.getElementById('expense-description').value,
@@ -315,6 +324,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (res.id || res.expense_id) {
                 alert('Egreso registrado correctamente');
                 bootstrap.Modal.getInstance(document.getElementById('addExpenseModal')).hide();
+                // Actualizar datos en memoria
+                if (!window.financialData) window.financialData = { incomes: [], expenses: [] };
+                window.financialData.expenses.push({
+                    date: data.date,
+                    amount: data.amount,
+                    description: data.description
+                });
+                // Refrescar indicadores y detalles
+                addCalendarIndicators(window.financialData);
+                setTimeout(() => showDetailModal(data.date), 200);
             } else {
                 alert('Error al registrar egreso');
             }
