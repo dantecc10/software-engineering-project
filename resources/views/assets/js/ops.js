@@ -1,7 +1,17 @@
+function getCsrfToken() {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    return meta ? meta.getAttribute('content') : '';
+}
+
 function createUser(name, email, password_hash) {
     return fetch('/api/users', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        credentials: 'same-origin', // <-- Esto es importante para enviar cookies de sesión
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+            // No envíes 'X-CSRF-TOKEN' aquí
+        },
         body: JSON.stringify({ name, email, password_hash })
     }).then(response => response.json());
 }
@@ -20,8 +30,14 @@ document.getElementById('user-registration-form').addEventListener('submit', fun
 
     createUser(name, email, password)
         .then(response => {
-            console.log('Usuario creado:', response);
-            alert('Usuario registrado con éxito');
+            if (response && response.user_id) {
+                alert('Usuario registrado con éxito');
+                window.location.href = '/login';
+            } else if (response && response.errors) {
+                alert('Error: ' + JSON.stringify(response.errors));
+            } else {
+                alert('Error al registrar usuario');
+            }
         })
         .catch(error => {
             console.error('Error al crear usuario:', error);

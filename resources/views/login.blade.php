@@ -9,8 +9,9 @@
     <meta name="description" content="Controla tus ingresos y gastos de manera simple y rápida. Una herramienta diseñada para estudiantes y personas que quieren mejorar su administración financiera del día a día.">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec') }}">
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=98e8244229c474ddf9d06b5957129e22') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=75572ffee0351e7b945b40fd2abf550b') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=e5cfa6c463d89d91dacf6be0dd89f93d') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -32,7 +33,8 @@
                 <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{{ asset('assets/img/illustrations/login.svg?h=dd35c7dba58803954242d42488889a4c') }}"></div>
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="pb-1 underline"><strong>Iniciar sesión</strong></span></h2>
-                    <form method="post" data-bs-theme="light">
+                    <form method="post" action="/login" data-bs-theme="light">
+                        @csrf
                         <div class="mb-3"><input class="shadow form-control" type="email" name="email" placeholder="Email"></div>
                         <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Contraseña"></div>
                         <div class="mb-5"><button class="btn btn-primary shadow" type="submit">Iniciar sesión</button></div>
@@ -89,6 +91,7 @@
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/calendar.js?h=255f46ee5590b7e43607b9c40b06e45b') }}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
     <script src="{{ asset('assets/js/icalendar.js?h=fea6ad6bc2a95558fbee0dac17440034') }}"></script>
     <script src="{{ asset('assets/js/ops.js?h=aabd161094d0ba3a8604ce2e6b96e251') }}"></script>

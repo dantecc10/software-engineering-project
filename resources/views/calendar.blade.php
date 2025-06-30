@@ -9,8 +9,9 @@
     <meta name="description" content="Controla tus ingresos y gastos de manera simple y rápida. Una herramienta diseñada para estudiantes y personas que quieren mejorar su administración financiera del día a día.">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css?h=2b9089ac3d02cc1e1b2f6684859260ec') }}">
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=98e8244229c474ddf9d06b5957129e22') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bss-overrides.css?h=75572ffee0351e7b945b40fd2abf550b') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/cashflow.css?h=e5cfa6c463d89d91dacf6be0dd89f93d') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -119,7 +120,21 @@
                                         <tr>
                                             <td>29</td>
                                             <td>
-                                                <div id="modal-open"></div>30
+                                                <div id="modal-open">
+                                                    <div class="modal fade" role="dialog" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4>Modal Title</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>The content of your modal.</p>
+                                                                </div>
+                                                                <div class="modal-footer"><button class="btn btn-warning" style="background-color:rgb(255,139,160);" type="button" data-bs-dismiss="modal">Close</button></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>30
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -143,8 +158,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- Start: WebArt - Modal Open -->
-        <div id="modal-open-1"><button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#detailModal">Open Dialog</button></div><!-- End: WebArt - Modal Open -->
+        </div>
         <div class="modal fade" role="dialog" tabindex="-1" id="detailModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -158,33 +172,45 @@
                             </div>
                         </div>
                         <div class="row text-center">
-                            <div class="col"></div>
-                        </div>
-                        <div class="row">
                             <div class="col">
-                                <div class="container">
-                                    <div class="row mb-5">
-                                        <div class="col col-lg-8 text-center mx-auto py-4">
-                                            <h1>Pestañas</h1>
-                                        </div>
-                                    </div>
-                                    <div class="bg-white rounded shadow p-3 mb-5">
-                                        <ul class="text-center bg-light border-0 flex-column flex-sm-row nav nav-tabs nav-pills rounded-nav" id="myTab" role="tablist">
-                                            <li class="flex-sm-fill nav-item"><button class="active fw-bold border-0 nav-link" id="home-tab" data-bs-target="#home" data-bs-toggle="tab" role="tab" aria-controls="home" aria-selected="true" type="button">Home</button></li>
-                                            <li class="flex-sm-fill nav-item"><button class="fw-bold border-0 nav-link" id="profile-tab" data-bs-target="#profile" data-bs-toggle="tab" role="tab" aria-controls="profile" aria-selected="false" type="button">Profile</button></li>
-                                            <li class="flex-sm-fill nav-item"><button class="fw-bold border-0 nav-link" id="contact-tab" data-bs-target="#contact" data-bs-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" type="button">Contact</button></li>
+                                <ul class="nav nav-pills nav-justified">
+                                    <li class="nav-item active"><a class="nav-link" href="{{ asset('#content1') }}" data-toggle="tab">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ asset('#content2') }}" data-toggle="tab">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ asset('#content3') }}" data-toggle="tab">Link</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ asset('#content4') }}" data-toggle="tab">Link</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="content1" class="tab-pane fade in active">
+                                        <ul>
+                                            <li>Item 1</li>
+                                            <li>Item 2</li>
+                                            <li>Item 3</li>
+                                            <li>Item 4</li>
                                         </ul>
-                                        <div id="myTabContent" class="tab-content">
-                                            <div class="px-4 py-5 tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                                <p>Párrafo para inicio</p>
-                                            </div>
-                                            <div class="px-4 py-5 tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                                <p>Párrafo para inicio</p>
-                                            </div>
-                                            <div class="px-4 py-5 tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                                <p>Párrafo para inicio</p>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div id="content2" class="tab-pane fade">
+                                        <ul>
+                                            <li>Item 1</li>
+                                            <li>Item 2</li>
+                                            <li>Item 3</li>
+                                            <li>Item 4</li>
+                                        </ul>
+                                    </div>
+                                    <div id="content3" class="tab-pane fade">
+                                        <ul>
+                                            <li>Item 1</li>
+                                            <li>Item 2</li>
+                                            <li>Item 3</li>
+                                            <li>Item 4</li>
+                                        </ul>
+                                    </div>
+                                    <div id="content4" class="tab-pane fade">
+                                        <ul>
+                                            <li>Item 1</li>
+                                            <li>Item 2</li>
+                                            <li>Item 3</li>
+                                            <li>Item 4</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -241,6 +267,7 @@
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/calendar.js?h=255f46ee5590b7e43607b9c40b06e45b') }}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
     <script src="{{ asset('assets/js/icalendar.js?h=fea6ad6bc2a95558fbee0dac17440034') }}"></script>
     <script src="{{ asset('assets/js/ops.js?h=aabd161094d0ba3a8604ce2e6b96e251') }}"></script>
