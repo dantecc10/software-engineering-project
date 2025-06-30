@@ -79,6 +79,9 @@
                 }
             }
         }
+        // Hacer globales para otros scripts:
+        window.year = year;
+        window.month = month;
     };
     
     Calendar.prototype.clickDay = function(o) {

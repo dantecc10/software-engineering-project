@@ -142,14 +142,10 @@ function loadFinancialDataFromJSON(jsonData) {
 
 // Integración simplificada con el calendario existente
 function enhanceCalendarWithIndicators() {
-    // Guardar referencias a las funciones originales
+    if (typeof Calendar === "undefined") return; // Evita error si no está definido
     const originalDrawDays = Calendar.prototype.drawDays;
-    
-    // Sobrescribir drawDays para añadir indicadores después de dibujar
     Calendar.prototype.drawDays = function() {
         originalDrawDays.call(this);
-        
-        // Cargar datos de ejemplo después de dibujar el calendario
         setTimeout(() => {
             loadExampleFinancialData();
         }, 50);
@@ -203,8 +199,8 @@ async function showDetailModal(dateKey, indicators) {
     const expenses = (window.financialData?.expenses || []).filter(e => e.date === dateKey);
     const modal = new bootstrap.Modal(document.getElementById('detailModal'));
     // Balance
-    const totalIncomes = incomes.reduce((a, b) => a + b.amount, 0);
-    const totalExpenses = expenses.reduce((a, b) => a + b.amount, 0);
+    const totalIncomes = incomes.reduce((a, b) => a + Number(b.amount), 0);
+    const totalExpenses = expenses.reduce((a, b) => a + Number(b.amount), 0);
     // Mensaje balance
     let msg = '';
     if (totalIncomes > totalExpenses) {
@@ -215,7 +211,15 @@ async function showDetailModal(dateKey, indicators) {
         msg = 'Tus gastos e ingresos son iguales. Lo ideal es gastar menos de lo que se recibe para ahorrar un poco.';
     }
     document.getElementById('balanceMessage').innerHTML = msg;
-    // Gráfico
+    // Gráfico con título explicativo
+    const chartContainer = document.getElementById('detailPieChart').parentElement;
+    let chartTitle = chartContainer.querySelector('.chart-title');
+    if (!chartTitle) {
+        chartTitle = document.createElement('div');
+        chartTitle.className = 'chart-title fw-bold mb-2';
+        chartContainer.prepend(chartTitle);
+    }
+    chartTitle.innerText = 'Distribución de ingresos y egresos para el día seleccionado';
     drawPieChart(document.getElementById('detailPieChart'), {
         labels: ['Ingresos', 'Gastos'],
         data: [totalIncomes, totalExpenses],
@@ -352,7 +356,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Al cargar la página, carga los datos reales del usuario
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
-        enhanceCalendarWithIndicators();
+        if (typeof Calendar !== "undefined") {
+            enhanceCalendarWithIndicators();
+        }
         fetchFinancialData();
     }, 100);
 });
