@@ -266,8 +266,8 @@
                         <div class="mb-3">
                             <label for="income-amount" class="form-label">Cantidad</label>
                             <div class="input-group">
-                                <span class="input-group-text">$</span>
                                 <input type="number" class="form-control" id="income-amount" name="amount" step="0.01" min="0" required>
+                                <span class="input-group-text">$</span>
                             </div>
                         </div>
                     </div>
@@ -302,8 +302,8 @@
                         <div class="mb-3">
                             <label for="expense-amount" class="form-label">Cantidad</label>
                             <div class="input-group">
-                                <span class="input-group-text">$</span>
                                 <input type="number" class="form-control" id="expense-amount" name="amount" step="0.01" min="0" required>
+                                <span class="input-group-text">$</span>
                             </div>
                         </div>
                         <div class="mb-3">

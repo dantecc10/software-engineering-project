@@ -180,8 +180,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
-// Muestra el modal de detalle para el día seleccionado
-function showDetailModal(dateKey, indicators) {
+// Cargar ingresos y egresos del usuario autenticado desde la API
+async function fetchFinancialData() {
+    try {
+        const [incomesRes, expensesRes] = await Promise.all([
+            fetch('/incomes?user_id=' + (window.userId || 1)),
+            fetch('/expenses?user_id=' + (window.userId || 1))
+        ]);
+        const incomes = await incomesRes.json();
+        const expenses = await expensesRes.json();
+        window.financialData = { incomes, expenses };
+        addCalendarIndicators(window.financialData);
+    } catch (e) {
+        console.error('Error al cargar ingresos/egresos:', e);
+    }
+}
+
+// Sobrescribe showDetailModal para recargar datos antes de mostrar el modal
+async function showDetailModal(dateKey, indicators) {
+    await fetchFinancialData();
     const incomes = (window.financialData?.incomes || []).filter(i => i.date === dateKey);
     const expenses = (window.financialData?.expenses || []).filter(e => e.date === dateKey);
     const modal = new bootstrap.Modal(document.getElementById('detailModal'));
@@ -279,19 +296,11 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(res => {
+        .then(async res => {
             if (res.id || res.income_id) {
                 alert('Ingreso registrado correctamente');
                 bootstrap.Modal.getInstance(document.getElementById('addIncomeModal')).hide();
-                // Actualizar datos en memoria
-                if (!window.financialData) window.financialData = { incomes: [], expenses: [] };
-                window.financialData.incomes.push({
-                    date: data.date,
-                    amount: data.amount,
-                    type: data.type
-                });
-                // Refrescar indicadores y detalles
-                addCalendarIndicators(window.financialData);
+                await fetchFinancialData();
                 setTimeout(() => showDetailModal(data.date), 200);
             } else {
                 alert('Error al registrar ingreso');
@@ -320,19 +329,11 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(res => {
+        .then(async res => {
             if (res.id || res.expense_id) {
                 alert('Egreso registrado correctamente');
                 bootstrap.Modal.getInstance(document.getElementById('addExpenseModal')).hide();
-                // Actualizar datos en memoria
-                if (!window.financialData) window.financialData = { incomes: [], expenses: [] };
-                window.financialData.expenses.push({
-                    date: data.date,
-                    amount: data.amount,
-                    description: data.description
-                });
-                // Refrescar indicadores y detalles
-                addCalendarIndicators(window.financialData);
+                await fetchFinancialData();
                 setTimeout(() => showDetailModal(data.date), 200);
             } else {
                 alert('Error al registrar egreso');
@@ -340,4 +341,12 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(() => alert('Error al registrar egreso'));
     };
+});
+
+// Al cargar la página, carga los datos reales del usuario
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        enhanceCalendarWithIndicators();
+        fetchFinancialData();
+    }, 100);
 });
