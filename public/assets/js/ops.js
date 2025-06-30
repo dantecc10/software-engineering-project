@@ -1,5 +1,5 @@
 function createUser(name, email, password_hash) {
-    return fetch('/api/platform_users', {
+    return fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ name, email, password_hash })
