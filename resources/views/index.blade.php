@@ -24,12 +24,41 @@
 <body>
     <!-- Start: Navbar Centered Links -->
     <nav class="navbar navbar-expand-md fixed-top py-3 navbar-shrink" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ asset('/') }}"><span>Cash Flow</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ asset('/') }}"><span>Cash Flow</span></a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ asset('/index') }}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ asset('calendar') }}">Calendario</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="{{ asset('login') }}">Iniciar sesión</a>
+                </ul>
+                @php
+                    $user = null;
+                    if(session('user_id')) {
+                        $user = \App\Models\PlatformUsers::find(session('user_id'));
+                    }
+                @endphp
+                @if($user)
+                    <div class="dropdown">
+                        <button class="btn btn-primary shadow dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ $user->name }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="{{ url('/profile') }}">Modificar perfil</a></li>
+                            <li>
+                                <form method="POST" action="{{ url('/logout') }}">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">Salir</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @else
+                    <a class="btn btn-primary shadow" role="button" href="{{ asset('login') }}">Iniciar sesión</a>
+                @endif
             </div>
         </div>
     </nav><!-- End: Navbar Centered Links -->

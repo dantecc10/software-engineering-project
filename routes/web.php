@@ -93,3 +93,12 @@ Route::post('/api/alerts', [AlertController::class, 'store']);
 Route::get('/api/alerts/{id}', [AlertController::class, 'show']);
 Route::put('/api/alerts/{id}', [AlertController::class, 'update']);
 Route::delete('/api/alerts/{id}', [AlertController::class, 'destroy']);
+
+// Ruta para cerrar sesión
+Route::post('/logout', [AuthController::class, 'logout']);
+
+// Ruta para la vista de perfil de usuario
+Route::get('/profile', function () {
+    // Aquí puedes cargar la vista de perfil del usuario
+    return view('profile');
+})->middleware('web');

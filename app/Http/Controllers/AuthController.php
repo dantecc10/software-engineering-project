@@ -26,4 +26,10 @@ class AuthController extends Controller
 
         return back()->withErrors(['email' => 'Credenciales incorrectas']);
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget('user_id');
+        return redirect('/login');
+    }
 }
