@@ -154,23 +154,7 @@
                                         </tr>
                                         <tr>
                                             <td>29</td>
-                                            <td>
-                                                <div id="modal-open">
-                                                    <div class="modal fade" role="dialog" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4>Modal Title</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>The content of your modal.</p>
-                                                                </div>
-                                                                <div class="modal-footer"><button class="btn btn-warning" style="background-color:rgb(255,139,160);" type="button" data-bs-dismiss="modal">Close</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>30
-                                            </td>
+                                            <td>30</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
