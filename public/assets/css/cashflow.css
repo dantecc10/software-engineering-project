@@ -14,7 +14,7 @@
   line-height: 1.8;
   font-weight: normal;
   background: #f8f9fd;
-  color: gray;
+  color: gray !important;
 }
 
 .ftco-section {
@@ -180,7 +180,7 @@ table.calendar tbody tr {
   color: #000;
 }
 
-table.calendar tbody td {
+td {
   width: 14%;
   border-radius: 50%;
   cursor: pointer;
@@ -191,7 +191,7 @@ table.calendar tbody td {
   z-index: 0;
 }
 
-table.calendar tbody td:after {
+td:after {
   position: absolute;
   top: 50%;
   left: 0;
@@ -219,16 +219,16 @@ table.calendar tbody td:after {
   }
 }
 
-table.calendar tbody td:hover, .selected {
+td:hover, .selected {
   color: #fff;
   border: none;
 }
 
-table.calendar tbody td:hover:after, .selected:after {
+td:hover:after, .selected:after {
   background: #2a3246;
 }
 
-table.calendar tbody td:active {
+td:active {
   -webkit-transform: scale(0.7);
   -ms-transform: scale(0.7);
   transform: scale(0.7);
@@ -315,4 +315,13 @@ table.calendar tbody td:active {
   border-left: 20px solid red;
   border-top: 20px solid transparent;
 }
+
+/* td.selected {
+  background-color: #2a3246 !important;
+  color: #fff !important;
+}
+
+td.selected:after {
+  background-color: #2a3246 !important;
+} */
 
