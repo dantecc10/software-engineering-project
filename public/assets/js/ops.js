@@ -6,6 +6,14 @@ function createUser(name, email, password_hash) {
     }).then(response => response.json());
 }
 
+function getHeaders() {
+    return {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-CSRF-TOKEN': getCsrfToken()
+    };
+}
+
 document.getElementById('user-registration-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar que recargue la página
 
