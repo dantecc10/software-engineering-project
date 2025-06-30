@@ -47,7 +47,7 @@ Route::get('/signup', function () {
 // Ruta para la vista de calendario
 Route::get('/calendar', function () {
     $categories = \App\Models\Category::all();
-    $frequencies = \App\Models\Frequency::all();
+    $frequencies = \App\Models\Frequency::all(); // <-- ya apunta a frecuencies
     return view('calendar', compact('categories', 'frequencies'));
 });
 

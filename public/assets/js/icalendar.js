@@ -403,3 +403,5 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchFinancialData();
     }, 100);
 });
+
+// No hay cambios necesarios aquí, solo asegúrate que el backend responde con los datos correctos.
