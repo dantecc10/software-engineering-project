@@ -39,6 +39,41 @@
             </div>
         </div><!-- End: Testimonials -->
         <div class="container calendar-container">
+            <!-- Tabla de simbología -->
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-8">
+                    <table class="table table-bordered table-sm w-auto mx-auto mb-0">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="text-center">Simbología</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span style="display:inline-block;width:0;height:0;
+                                        border-left:12px solid transparent;
+                                        border-right:12px solid transparent;
+                                        border-bottom:18px solid #28a745;
+                                        vertical-align:middle;"></span>
+                                </td>
+                                <td>Ingreso registrado</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="display:inline-block;width:0;height:0;
+                                        border-left:12px solid transparent;
+                                        border-right:12px solid transparent;
+                                        border-bottom:18px solid #dc3545;
+                                        vertical-align:middle;"></span>
+                                </td>
+                                <td>Egreso registrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Fin simbología -->
             <div class="row justify-content-center">
                 <div class="col col-md-6 text-center mb-5">
                     <h3>Calendario</h3>
@@ -159,64 +194,25 @@
                 </div>
             </div>
         </div>
+        <!-- Modal de detalle -->
         <div class="modal fade" role="dialog" tabindex="-1" id="detailModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title fw-bolder">Balance detallado</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                        <h4 class="modal-title fw-bolder" id="detailModalTitle">Balance detallado</h4>
+                        <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <p>Mira los ingresos y gastos del 29 de junio del 2025.</p>
-                            </div>
+                        <div id="detailModalContent">
+                            <!-- Aquí se inyecta el contenido dinámicamente -->
                         </div>
-                        <div class="row text-center">
-                            <div class="col">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li class="nav-item active"><a class="nav-link" href="{{ asset('#content1') }}" data-toggle="tab">Link</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ asset('#content2') }}" data-toggle="tab">Link</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ asset('#content3') }}" data-toggle="tab">Link</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ asset('#content4') }}" data-toggle="tab">Link</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div id="content1" class="tab-pane fade in active">
-                                        <ul>
-                                            <li>Item 1</li>
-                                            <li>Item 2</li>
-                                            <li>Item 3</li>
-                                            <li>Item 4</li>
-                                        </ul>
-                                    </div>
-                                    <div id="content2" class="tab-pane fade">
-                                        <ul>
-                                            <li>Item 1</li>
-                                            <li>Item 2</li>
-                                            <li>Item 3</li>
-                                            <li>Item 4</li>
-                                        </ul>
-                                    </div>
-                                    <div id="content3" class="tab-pane fade">
-                                        <ul>
-                                            <li>Item 1</li>
-                                            <li>Item 2</li>
-                                            <li>Item 3</li>
-                                            <li>Item 4</li>
-                                        </ul>
-                                    </div>
-                                    <div id="content4" class="tab-pane fade">
-                                        <ul>
-                                            <li>Item 1</li>
-                                            <li>Item 2</li>
-                                            <li>Item 3</li>
-                                            <li>Item 4</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="my-3">
+                            <canvas id="detailPieChart" width="200" height="200" style="display:none;"></canvas>
                         </div>
                     </div>
-                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                    <div class="modal-footer" id="detailModalFooter">
+                        <!-- Botones dinámicos -->
+                    </div>
                 </div>
             </div>
         </div>

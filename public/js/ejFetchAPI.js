@@ -288,6 +288,52 @@ function deleteAlert(id) {
     }).then(response => response.json());
 }
 
+// ===================== DOCUMENT =====================
+// Obtener todos los documentos
+function fetchDocuments() {
+    console.log('GET /documents');
+    return fetch('/documents')
+        .then(response => response.json());
+}
+
+// Obtener un documento por ID
+function fetchDocumentById(id) {
+    console.log(`GET /documents/${id}`);
+    return fetch(`/documents/${id}`)
+        .then(response => response.json());
+}
+
+// Crear un documento nuevo
+function createDocument(user_id, title, content, created_at) {
+    const data = { user_id, title, content, created_at };
+    console.log('POST /documents:', JSON.stringify(data));
+    return fetch('/documents', {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify(data)
+    }).then(response => response.json());
+}
+
+// Actualizar un documento
+function updateDocument(id, user_id, title, content, created_at) {
+    const data = { user_id, title, content, created_at };
+    console.log(`PUT /documents/${id}:`, JSON.stringify(data));
+    return fetch(`/documents/${id}`, {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify(data)
+    }).then(response => response.json());
+}
+
+// Eliminar un documento
+function deleteDocument(id) {
+    console.log(`DELETE /documents/${id}`);
+    return fetch(`/documents/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders()
+    }).then(response => response.json());
+}
+
 // ===================== USO DE FUNCIONES (EJEMPLOS) =====================
 
 // ----------- USER -----------
