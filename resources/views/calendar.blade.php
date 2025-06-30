@@ -39,38 +39,27 @@
             </div>
         </div><!-- End: Testimonials -->
         <div class="container calendar-container">
-            <!-- Tabla de simbología -->
+            <!-- Simbología visual, NO tabla -->
             <div class="row justify-content-center mb-3">
-                <div class="col-md-8">
-                    <table class="table table-bordered table-sm w-auto mx-auto mb-0">
-                        <thead>
-                            <tr>
-                                <th colspan="2" class="text-center">Simbología</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span style="display:inline-block;width:0;height:0;
-                                        border-left:12px solid transparent;
-                                        border-right:12px solid transparent;
-                                        border-bottom:18px solid #28a745;
-                                        vertical-align:middle;"></span>
-                                </td>
-                                <td>Ingreso registrado</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span style="display:inline-block;width:0;height:0;
-                                        border-left:12px solid transparent;
-                                        border-right:12px solid transparent;
-                                        border-bottom:18px solid #dc3545;
-                                        vertical-align:middle;"></span>
-                                </td>
-                                <td>Egreso registrado</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-md-8 d-flex justify-content-center">
+                    <div style="display:flex;gap:2rem;align-items:center;">
+                        <span>
+                            <span style="display:inline-block;width:0;height:0;
+                                border-left:12px solid transparent;
+                                border-right:12px solid transparent;
+                                border-bottom:18px solid #28a745;
+                                vertical-align:middle;margin-right:6px;"></span>
+                            <span style="vertical-align:middle;">Ingreso registrado</span>
+                        </span>
+                        <span>
+                            <span style="display:inline-block;width:0;height:0;
+                                border-left:12px solid transparent;
+                                border-right:12px solid transparent;
+                                border-bottom:18px solid #dc3545;
+                                vertical-align:middle;margin-right:6px;"></span>
+                            <span style="vertical-align:middle;">Egreso registrado</span>
+                        </span>
+                    </div>
                 </div>
             </div>
             <!-- Fin simbología -->

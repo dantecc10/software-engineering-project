@@ -83,25 +83,29 @@ function decorateCellWithIndicator(cell, indicators) {
 
 // Función auxiliar para aplicar los indicadores a las celdas
 function applyIndicatorsToCalendar(dateIndicators) {
-    const calendarCells = document.querySelectorAll('#calendar tbody td');
-    
+    // Selector para los días del calendario moderno
+    const calendarCells = document.querySelectorAll('.calendar-wrap td, .fc-daygrid-day'); // Ajusta según tu calendario
+
     calendarCells.forEach(cell => {
-        cell.classList.remove('income-indicator', 'expense-indicator');
-        // Limpiar indicadores previos
-        // cell.classList.remove('income-indicator', 'expense-indicator');
-        
-        // Solo procesar celdas que tienen contenido numérico (días válidos)
-        const dayText = cell.textContent.trim();
-        if (!dayText || isNaN(dayText) || cell.id === 'disabled') return;
-        
-        // Obtener la fecha actual del calendario
+        // Limpia decoraciones previas
+        let deco = cell.querySelector('.indicator-svg');
+        if (deco) deco.remove();
+
+        // Obtén el día (ajusta según el HTML generado por tu calendario)
+        let dayText = cell.textContent.trim();
+        if (!dayText || isNaN(dayText)) return;
+
+        // Si el calendario moderno usa atributos para la fecha, úsalos aquí
+        // let dateKey = cell.getAttribute('data-date'); // Ejemplo para FullCalendar
+        // Si no, usa el método anterior:
         const currentDate = getCurrentCalendarDate(parseInt(dayText));
         if (!currentDate) return;
-        
         const dateKey = formatDateForComparison(currentDate);
         const indicators = dateIndicators[dateKey];
+
         decorateCellWithIndicator(cell, indicators);
-        // Añade evento click para mostrar modal de detalle
+
+        // Evento click para mostrar modal
         cell.onclick = () => showDetailModal(dateKey, indicators);
     });
 }
