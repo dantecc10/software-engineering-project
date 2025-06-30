@@ -211,7 +211,8 @@ async function showDetailModal(dateKey, indicators) {
         msg = 'Tus gastos e ingresos son iguales. Lo ideal es gastar menos de lo que se recibe para ahorrar un poco.';
     }
     document.getElementById('balanceMessage').innerHTML = msg;
-    // Gráfico con título explicativo
+
+    // Título explicativo arriba de la gráfica
     const chartContainer = document.getElementById('detailPieChart').parentElement;
     let chartTitle = chartContainer.querySelector('.chart-title');
     if (!chartTitle) {
@@ -220,11 +221,14 @@ async function showDetailModal(dateKey, indicators) {
         chartContainer.prepend(chartTitle);
     }
     chartTitle.innerText = 'Distribución de ingresos y egresos para el día seleccionado';
+
+    // Gráfico de pastel
     drawPieChart(document.getElementById('detailPieChart'), {
         labels: ['Ingresos', 'Gastos'],
         data: [totalIncomes, totalExpenses],
         colors: ['#28a745', '#dc3545']
     });
+
     // Ingresos
     const incomesList = document.getElementById('incomesList');
     incomesList.innerHTML = incomes.length
