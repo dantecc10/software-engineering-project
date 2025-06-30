@@ -22,29 +22,35 @@ function addCalendarIndicators(financialData) {
 // Función auxiliar para procesar los datos financieros
 function processFinancialData(data) {
     const dateMap = {};
-    
+    // Helper para obtener la fecha relevante de un registro
+    function getRelevantDate(obj, ...fields) {
+        for (let f of fields) {
+            if (obj[f]) return obj[f].toString().substring(0, 10);
+        }
+        return null;
+    }
     // Procesar ingresos
     if (data.incomes && Array.isArray(data.incomes)) {
         data.incomes.forEach(income => {
-            const dateKey = income.date;
+            const dateKey = getRelevantDate(income, 'date', 'income_date', 'created_at');
+            if (!dateKey) return;
             if (!dateMap[dateKey]) {
                 dateMap[dateKey] = { hasIncome: false, hasExpense: false };
             }
             dateMap[dateKey].hasIncome = true;
         });
     }
-    
     // Procesar gastos
     if (data.expenses && Array.isArray(data.expenses)) {
         data.expenses.forEach(expense => {
-            const dateKey = expense.date;
+            const dateKey = getRelevantDate(expense, 'date', 'next_date', 'created_at');
+            if (!dateKey) return;
             if (!dateMap[dateKey]) {
                 dateMap[dateKey] = { hasIncome: false, hasExpense: false };
             }
             dateMap[dateKey].hasExpense = true;
         });
     }
-    
     return dateMap;
 }
 
@@ -341,14 +347,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
         document.getElementById('addExpenseForm').onsubmit = function(e) {
             e.preventDefault();
+            const freqValue = document.getElementById('expense-frequency').value;
+            const nextDateValue = freqValue === 'Única vez' ? null : document.getElementById('expense-next-date').value;
             const data = {
                 user_id: window.userId || 1,
                 date: document.getElementById('expense-date').value,
                 category: document.getElementById('expense-category').value,
                 description: document.getElementById('expense-description').value,
                 amount: parseFloat(document.getElementById('expense-amount').value),
-                frequency: document.getElementById('expense-frequency').value,
-                next_date: document.getElementById('expense-next-date').value
+                frequency: freqValue,
+                next_date: nextDateValue
             };
             fetch('/expenses', {
                 method: 'POST',

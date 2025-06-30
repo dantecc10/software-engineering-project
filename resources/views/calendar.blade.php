@@ -308,9 +308,16 @@
                         </div>
                         <div class="mb-3">
                             <label for="expense-frequency" class="form-label">Frecuencia</label>
-                            <input type="text" class="form-control" id="expense-frequency" name="frequency" required>
+                            <select class="form-select" id="expense-frequency" name="frequency" required>
+                                <option value="Única vez">Única vez</option>
+                                <option value="Diario">Diario</option>
+                                <option value="Semanal">Semanal</option>
+                                <option value="Quincenal">Quincenal</option>
+                                <option value="Mensual">Mensual</option>
+                                <option value="Anual">Anual</option>
+                            </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" id="expense-next-date-group">
                             <label for="expense-next-date" class="form-label">Próxima fecha</label>
                             <input type="date" class="form-control" id="expense-next-date" name="next_date">
                         </div>
@@ -374,6 +381,23 @@
     <script src="{{ asset('assets/js/icalendar.js?...') }}"></script>
     <script src="{{ asset('assets/js/ops.js?h=aabd161094d0ba3a8604ce2e6b96e251') }}"></script>
     <script src="{{ asset('assets/js/startup-modern.js?h=860a1ecddc64fd24c02f2fc109343dbd') }}"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar/ocultar próxima fecha según frecuencia
+        const freq = document.getElementById('expense-frequency');
+        const nextDateGroup = document.getElementById('expense-next-date-group');
+        function toggleNextDate() {
+            if (freq.value === 'Única vez') {
+                nextDateGroup.style.display = 'none';
+                document.getElementById('expense-next-date').value = '';
+            } else {
+                nextDateGroup.style.display = '';
+            }
+        }
+        freq.addEventListener('change', toggleNextDate);
+        toggleNextDate();
+    });
+    </script>
 </body>
 
 </html>
